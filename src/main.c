@@ -71,7 +71,8 @@ int main(void) {
 			//float temperature = ADC_ToTemperature(adc_data);
 			//USB_SendTemperature(temperature);
 			
-			uint16_t temp = ADC_ToTemp();
+			uint16_t adc_val = Get_Avg_ADC_value();
+            uint16_t temp = ADC_ToTemp(adc_val);
 			USB_SendTemp(temp);
 		}	
 	}

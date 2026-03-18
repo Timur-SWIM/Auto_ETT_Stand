@@ -136,14 +136,17 @@ float ADC_ToTemperature(uint16_t adc)
     return temperature;
 }
 */
-uint16_t ADC_ToTemp(void) {
+uint16_t Get_Avg_ADC_value(void) {
     uint32_t sum = 0;
 
     for(int i = 0; i < 10; i++) {
         sum += ADCConvertedValue[i]; }
-	
-	uint16_t average_adc = sum / 10;
-	uint16_t voltage = (average_adc * VREF) / ADC_MAX_VALUE;
+    
+    uint16_t average_adc = sum / 10;
+    return average_adc;
+}   
+uint16_t ADC_ToTemp(uint16_t adc_val) {
+	uint16_t voltage = (adc_val * VREF) / ADC_MAX_VALUE;
 	uint16_t temp = voltage / LM35_SENSITIVITY;
 	return temp;
 }
