@@ -1,0 +1,53 @@
+# Keil uVision project files
+*.uvguix.*
+*.uvoptx.user
+*.bak
+
+# Build outputs
+Objects/
+Listings/
+RTE/
+
+# Executable and binary outputs
+*.axf
+*.hex
+*.bin
+*.elf
+*.map
+*.htm
+*.lnp
+*.dep
+*.build_log.htm
+
+# Object files and dependencies
+*.o
+*.d
+
+# VS Code settings
+.vscode/
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# User-specific files
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Temporary files
+*~
+*.tmp
+*.temp
+
+# Logs
+*.log
+
+# Backup files
+*.backup
+*.orig

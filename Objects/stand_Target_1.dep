@@ -1,0 +1,210 @@
+Dependencies for Project 'stand', Target 'Target_1': (DO NOT MODIFY !)
+CompilerVersion: 6240000::V6.24::ARMCLANG
+F (.\src\adc.c)(0x69BACBBD)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m3 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__EVAL -gdwarf-4 -O0 -ffunction-sections -Wall -Wextra -Wno-packed -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ./inc -Wno-unused-parameter-I./RTE/Device/MDR32F9Q2I-I./RTE/_Target_1-IC:/Users/User/AppData/Local/Arm/Packs/Milandr/MDR32FxQI/1.3.2/Libraries/CMSIS/MDR32FxQI/CoreSupport/CM3-IC:/Users/User/AppData/Local/Arm/Packs/Milandr/MDR32FxQI/1.3.2/Libraries/CMSIS/MDR32FxQI/DeviceSupport/MDR32F9Q2I/inc-IC:/Users/User/AppData/Local/Arm/Packs/Milandr/MDR32FxQI/1.3.2/Libraries/SPL/MDR32FxQI/inc-IC:/Users/User/AppData/Local/Arm/Packs/Milandr/MDR32FxQI/1.3.2/Libraries/SPL/MDR32FxQI/inc/USB_Library-D__UVISION_VERSION="543" -D_RTE_-o ./objects/adc.o -MMD)
+I (inc\adc.h)(0x69B98764)
+I (C:\Users\User\AppData\Local\Arm\Packs\Milandr\MDR32FxQI\1.3.2\Libraries\SPL\MDR32FxQI\inc\MDR32FxQI_adc.h)(0x698DC39C)
+I (RTE\Device\MDR32F9Q2I\MDR32FxQI_config.h)(0x69BACF21)
+I (RTE\_Target_1\RTE_Components.h)(0x69BAC6EB)
+I (C:\Users\User\AppData\Local\Arm\Packs\Milandr\MDR32FxQI\1.3.2\Libraries\CMSIS\MDR32FxQI\DeviceSupport\MDR32F9Q2I\inc\MDR32F9Q2I.h)(0x698DC39C)
+I (C:\Users\User\AppData\Local\Arm\Packs\Milandr\MDR32FxQI\1.3.2\Libraries\CMSIS\MDR32FxQI\CoreSupport\CM3\core_cm3.h)(0x698DC39C)
+I (C:\Users\User\AppData\Local\Arm\Packs\Milandr\MDR32FxQI\1.3.2\Libraries\CMSIS\MDR32FxQI\CoreSupport\CM3\core_cmInstr.h)(0x698DC39C)
+I (C:\Users\User\AppData\Local\Arm\Packs\Milandr\MDR32FxQI\1.3.2\Libraries\CMSIS\MDR32FxQI\CoreSupport\CM3\core_cmFunc.h)(0x698DC39C)
+I (RTE\Device\MDR32F9Q2I\system_MDR32F9Q2I.h)(0x698DC39C)
+I (C:\Users\User\AppData\Local\Arm\Packs\Milandr\MDR32FxQI\1.3.2\Libraries\SPL\MDR32FxQI\inc\MDR32FxQI_dma.h)(0x698DC39C)
+F (.\src\main.c)(0x69BADC57)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m3 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__EVAL -gdwarf-4 -O0 -ffunction-sections -Wall -Wextra -Wno-packed -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ./inc -Wno-unused-parameter-I./RTE/Device/MDR32F9Q2I-I./RTE/_Target_1-IC:/Users/User/AppData/Local/Arm/Packs/Milandr/MDR32FxQI/1.3.2/Libraries/CMSIS/MDR32FxQI/CoreSupport/CM3-IC:/Users/User/AppData/Local/Arm/Packs/Milandr/MDR32FxQI/1.3.2/Libraries/CMSIS/MDR32FxQI/DeviceSupport/MDR32F9Q2I/inc-IC:/Users/User/AppData/Local/Arm/Packs/Milandr/MDR32FxQI/1.3.2/Libraries/SPL/MDR32FxQI/inc-IC:/Users/User/AppData/Local/Arm/Packs/Milandr/MDR32FxQI/1.3.2/Libraries/SPL/MDR32FxQI/inc/USB_Library-D__UVISION_VERSION="543" -D_RTE_-o ./objects/main.o -MMD)
+I (inc\main.h)(0x69A6DA7B)
+I (C:\Users\User\AppData\Local\Arm\Packs\Milandr\MDR32FxQI\1.3.2\Libraries\SPL\MDR32FxQI\inc\MDR32FxQI_rst_clk.h)(0x698DC39C)
+I (RTE\Device\MDR32F9Q2I\MDR32FxQI_config.h)(0x69BACF21)
+I (RTE\_Target_1\RTE_Components.h)(0x69BAC6EB)
+I (C:\Users\User\AppData\Local\Arm\Packs\Milandr\MDR32FxQI\1.3.2\Libraries\CMSIS\MDR32FxQI\DeviceSupport\MDR32F9Q2I\inc\MDR32F9Q2I.h)(0x698DC39C)
+I (C:\Users\User\AppData\Local\Arm\Packs\Milandr\MDR32FxQI\1.3.2\Libraries\CMSIS\MDR32FxQI\CoreSupport\CM3\core_cm3.h)(0x698DC39C)
+I (C:\Users\User\AppData\Local\Arm\Packs\Milandr\MDR32FxQI\1.3.2\Libraries\CMSIS\MDR32FxQI\CoreSupport\CM3\core_cmInstr.h)(0x698DC39C)
+I (C:\Users\User\AppData\Local\Arm\Packs\Milandr\MDR32FxQI\1.3.2\Libraries\CMSIS\MDR32FxQI\CoreSupport\CM3\core_cmFunc.h)(0x698DC39C)
+I (RTE\Device\MDR32F9Q2I\system_MDR32F9Q2I.h)(0x698DC39C)
+I (inc\adc.h)(0x69B98764)
+I (C:\Users\User\AppData\Local\Arm\Packs\Milandr\MDR32FxQI\1.3.2\Libraries\SPL\MDR32FxQI\inc\MDR32FxQI_adc.h)(0x698DC39C)
+I (C:\Users\User\AppData\Local\Arm\Packs\Milandr\MDR32FxQI\1.3.2\Libraries\SPL\MDR32FxQI\inc\MDR32FxQI_dma.h)(0x698DC39C)
+I (inc\pwm.h)(0x69B2EEE6)
+I (C:\Users\User\AppData\Local\Arm\Packs\Milandr\MDR32FxQI\1.3.2\Libraries\SPL\MDR32FxQI\inc\MDR32FxQI_port.h)(0x698DC39C)
+I (C:\Users\User\AppData\Local\Arm\Packs\Milandr\MDR32FxQI\1.3.2\Libraries\SPL\MDR32FxQI\inc\MDR32FxQI_timer.h)(0x698DC39C)
+I (inc\usb.h)(0x69B9880E)
+I (C:\Users\User\AppData\Local\Arm\Packs\Milandr\MDR32FxQI\1.3.2\Libraries\SPL\MDR32FxQI\inc\USB_Library\MDR32FxQI_usb_handlers.h)(0x698DC39C)
+I (C:\Users\User\AppData\Local\Arm\Packs\Milandr\MDR32FxQI\1.3.2\Libraries\SPL\MDR32FxQI\inc\USB_Library\MDR32FxQI_usb_default_handlers.h)(0x698DC39C)
+I (C:\Users\User\AppData\Local\Arm\Packs\Milandr\MDR32FxQI\1.3.2\Libraries\SPL\MDR32FxQI\inc\USB_Library\MDR32FxQI_usb_CDC.h)(0x698DC39C)
+I (C:\Users\User\AppData\Local\Arm\Packs\Milandr\MDR32FxQI\1.3.2\Libraries\SPL\MDR32FxQI\inc\USB_Library\MDR32FxQI_usb_device.h)(0x698DC39C)
+I (C:\Users\User\AppData\Local\Arm\Packs\Milandr\MDR32FxQI\1.3.2\Libraries\SPL\MDR32FxQI\inc\MDR32FxQI_usb.h)(0x698DC39C)
+I (C:\Users\User\AppData\Local\Arm\Packs\Milandr\MDR32FxQI\1.3.2\Libraries\SPL\MDR32FxQI\inc\MDR32FxQI_eeprom.h)(0x698DC39C)
+I (C:\Users\User\AppData\Local\Arm\Packs\Milandr\MDR32FxQI\1.3.2\Libraries\SPL\MDR32FxQI\inc\MDR32FxQI_bkp.h)(0x698DC39C)
+F (.\src\pwm.c)(0x69B2F4CB)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m3 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__EVAL -gdwarf-4 -O0 -ffunction-sections -Wall -Wextra -Wno-packed -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ./inc -Wno-unused-parameter-I./RTE/Device/MDR32F9Q2I-I./RTE/_Target_1-IC:/Users/User/AppData/Local/Arm/Packs/Milandr/MDR32FxQI/1.3.2/Libraries/CMSIS/MDR32FxQI/CoreSupport/CM3-IC:/Users/User/AppData/Local/Arm/Packs/Milandr/MDR32FxQI/1.3.2/Libraries/CMSIS/MDR32FxQI/DeviceSupport/MDR32F9Q2I/inc-IC:/Users/User/AppData/Local/Arm/Packs/Milandr/MDR32FxQI/1.3.2/Libraries/SPL/MDR32FxQI/inc-IC:/Users/User/AppData/Local/Arm/Packs/Milandr/MDR32FxQI/1.3.2/Libraries/SPL/MDR32FxQI/inc/USB_Library-D__UVISION_VERSION="543" -D_RTE_-o ./objects/pwm.o -MMD)
+I (inc\pwm.h)(0x69B2EEE6)
+I (C:\Users\User\AppData\Local\Arm\Packs\Milandr\MDR32FxQI\1.3.2\Libraries\SPL\MDR32FxQI\inc\MDR32FxQI_port.h)(0x698DC39C)
+I (RTE\Device\MDR32F9Q2I\MDR32FxQI_config.h)(0x69BACF21)
+I (RTE\_Target_1\RTE_Components.h)(0x69BAC6EB)
+I (C:\Users\User\AppData\Local\Arm\Packs\Milandr\MDR32FxQI\1.3.2\Libraries\CMSIS\MDR32FxQI\DeviceSupport\MDR32F9Q2I\inc\MDR32F9Q2I.h)(0x698DC39C)
+I (C:\Users\User\AppData\Local\Arm\Packs\Milandr\MDR32FxQI\1.3.2\Libraries\CMSIS\MDR32FxQI\CoreSupport\CM3\core_cm3.h)(0x698DC39C)
+I (C:\Users\User\AppData\Local\Arm\Packs\Milandr\MDR32FxQI\1.3.2\Libraries\CMSIS\MDR32FxQI\CoreSupport\CM3\core_cmInstr.h)(0x698DC39C)
+I (C:\Users\User\AppData\Local\Arm\Packs\Milandr\MDR32FxQI\1.3.2\Libraries\CMSIS\MDR32FxQI\CoreSupport\CM3\core_cmFunc.h)(0x698DC39C)
+I (RTE\Device\MDR32F9Q2I\system_MDR32F9Q2I.h)(0x698DC39C)
+I (C:\Users\User\AppData\Local\Arm\Packs\Milandr\MDR32FxQI\1.3.2\Libraries\SPL\MDR32FxQI\inc\MDR32FxQI_timer.h)(0x698DC39C)
+I (C:\Users\User\AppData\Local\Arm\Packs\Milandr\MDR32FxQI\1.3.2\Libraries\SPL\MDR32FxQI\inc\MDR32FxQI_rst_clk.h)(0x698DC39C)
+F (.\src\usb.c)(0x69B9922F)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m3 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__EVAL -gdwarf-4 -O0 -ffunction-sections -Wall -Wextra -Wno-packed -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ./inc -Wno-unused-parameter-I./RTE/Device/MDR32F9Q2I-I./RTE/_Target_1-IC:/Users/User/AppData/Local/Arm/Packs/Milandr/MDR32FxQI/1.3.2/Libraries/CMSIS/MDR32FxQI/CoreSupport/CM3-IC:/Users/User/AppData/Local/Arm/Packs/Milandr/MDR32FxQI/1.3.2/Libraries/CMSIS/MDR32FxQI/DeviceSupport/MDR32F9Q2I/inc-IC:/Users/User/AppData/Local/Arm/Packs/Milandr/MDR32FxQI/1.3.2/Libraries/SPL/MDR32FxQI/inc-IC:/Users/User/AppData/Local/Arm/Packs/Milandr/MDR32FxQI/1.3.2/Libraries/SPL/MDR32FxQI/inc/USB_Library-D__UVISION_VERSION="543" -D_RTE_-o ./objects/usb.o -MMD)
+I (inc\usb.h)(0x69B9880E)
+I (RTE\Device\MDR32F9Q2I\MDR32FxQI_config.h)(0x69BACF21)
+I (RTE\_Target_1\RTE_Components.h)(0x69BAC6EB)
+I (C:\Users\User\AppData\Local\Arm\Packs\Milandr\MDR32FxQI\1.3.2\Libraries\CMSIS\MDR32FxQI\DeviceSupport\MDR32F9Q2I\inc\MDR32F9Q2I.h)(0x698DC39C)
+I (C:\Users\User\AppData\Local\Arm\Packs\Milandr\MDR32FxQI\1.3.2\Libraries\CMSIS\MDR32FxQI\CoreSupport\CM3\core_cm3.h)(0x698DC39C)
+I (C:\Users\User\AppData\Local\Arm\Packs\Milandr\MDR32FxQI\1.3.2\Libraries\CMSIS\MDR32FxQI\CoreSupport\CM3\core_cmInstr.h)(0x698DC39C)
+I (C:\Users\User\AppData\Local\Arm\Packs\Milandr\MDR32FxQI\1.3.2\Libraries\CMSIS\MDR32FxQI\CoreSupport\CM3\core_cmFunc.h)(0x698DC39C)
+I (RTE\Device\MDR32F9Q2I\system_MDR32F9Q2I.h)(0x698DC39C)
+I (C:\Users\User\AppData\Local\Arm\Packs\Milandr\MDR32FxQI\1.3.2\Libraries\SPL\MDR32FxQI\inc\USB_Library\MDR32FxQI_usb_handlers.h)(0x698DC39C)
+I (C:\Users\User\AppData\Local\Arm\Packs\Milandr\MDR32FxQI\1.3.2\Libraries\SPL\MDR32FxQI\inc\USB_Library\MDR32FxQI_usb_default_handlers.h)(0x698DC39C)
+I (C:\Users\User\AppData\Local\Arm\Packs\Milandr\MDR32FxQI\1.3.2\Libraries\SPL\MDR32FxQI\inc\USB_Library\MDR32FxQI_usb_CDC.h)(0x698DC39C)
+I (C:\Users\User\AppData\Local\Arm\Packs\Milandr\MDR32FxQI\1.3.2\Libraries\SPL\MDR32FxQI\inc\USB_Library\MDR32FxQI_usb_device.h)(0x698DC39C)
+I (C:\Users\User\AppData\Local\Arm\Packs\Milandr\MDR32FxQI\1.3.2\Libraries\SPL\MDR32FxQI\inc\MDR32FxQI_usb.h)(0x698DC39C)
+I (C:\Users\User\AppData\Local\Arm\Packs\Milandr\MDR32FxQI\1.3.2\Libraries\SPL\MDR32FxQI\inc\MDR32FxQI_rst_clk.h)(0x698DC39C)
+I (C:\Users\User\AppData\Local\Arm\Packs\Milandr\MDR32FxQI\1.3.2\Libraries\SPL\MDR32FxQI\inc\MDR32FxQI_eeprom.h)(0x698DC39C)
+I (C:\Users\User\AppData\Local\Arm\Packs\Milandr\MDR32FxQI\1.3.2\Libraries\SPL\MDR32FxQI\inc\MDR32FxQI_bkp.h)(0x698DC39C)
+F (.\inc\adc.h)(0x69B98764)()
+F (.\inc\main.h)(0x69A6DA7B)()
+F (.\inc\pwm.h)(0x69B2EEE6)()
+F (.\inc\usb.h)(0x69B9880E)()
+F (RTE/Device/MDR32F9Q2I/MDR32F9Q2I.sct)(0x698DC39C)()
+F (RTE/Device/MDR32F9Q2I/MDR32FxQI_config.h)(0x69BACF21)()
+F (RTE/Device/MDR32F9Q2I/startup_MDR32F9Q2I.S)(0x698DC39C)(--target=arm-arm-none-eabi -mcpu=cortex-m3 -masm=auto  -Wa,armasm,--diag_suppress=A1950W -c-gdwarf-4 -D__EVAL -MMD-I./RTE/Device/MDR32F9Q2I-I./RTE/_Target_1-IC:/Users/User/AppData/Local/Arm/Packs/Milandr/MDR32FxQI/1.3.2/Libraries/CMSIS/MDR32FxQI/CoreSupport/CM3-IC:/Users/User/AppData/Local/Arm/Packs/Milandr/MDR32FxQI/1.3.2/Libraries/CMSIS/MDR32FxQI/DeviceSupport/MDR32F9Q2I/inc-IC:/Users/User/AppData/Local/Arm/Packs/Milandr/MDR32FxQI/1.3.2/Libraries/SPL/MDR32FxQI/inc-IC:/Users/User/AppData/Local/Arm/Packs/Milandr/MDR32FxQI/1.3.2/Libraries/SPL/MDR32FxQI/inc/USB_Library-D__UVISION_VERSION=543 -D_RTE_-o ./objects/startup_mdr32f9q2i.o)
+F (RTE/Device/MDR32F9Q2I/system_MDR32F9Q2I.c)(0x698DC39C)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m3 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__EVAL -gdwarf-4 -O0 -ffunction-sections -Wall -Wextra -Wno-packed -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ./inc -Wno-unused-parameter-I./RTE/Device/MDR32F9Q2I-I./RTE/_Target_1-IC:/Users/User/AppData/Local/Arm/Packs/Milandr/MDR32FxQI/1.3.2/Libraries/CMSIS/MDR32FxQI/CoreSupport/CM3-IC:/Users/User/AppData/Local/Arm/Packs/Milandr/MDR32FxQI/1.3.2/Libraries/CMSIS/MDR32FxQI/DeviceSupport/MDR32F9Q2I/inc-IC:/Users/User/AppData/Local/Arm/Packs/Milandr/MDR32FxQI/1.3.2/Libraries/SPL/MDR32FxQI/inc-IC:/Users/User/AppData/Local/Arm/Packs/Milandr/MDR32FxQI/1.3.2/Libraries/SPL/MDR32FxQI/inc/USB_Library-D__UVISION_VERSION="543" -D_RTE_-o ./objects/system_mdr32f9q2i.o -MMD)
+I (C:\Users\User\AppData\Local\Arm\Packs\Milandr\MDR32FxQI\1.3.2\Libraries\CMSIS\MDR32FxQI\DeviceSupport\MDR32F9Q2I\inc\MDR32F9Q2I.h)(0x698DC39C)
+I (RTE\Device\MDR32F9Q2I\MDR32FxQI_config.h)(0x69BACF21)
+I (RTE\_Target_1\RTE_Components.h)(0x69BAC6EB)
+I (C:\Users\User\AppData\Local\Arm\Packs\Milandr\MDR32FxQI\1.3.2\Libraries\CMSIS\MDR32FxQI\CoreSupport\CM3\core_cm3.h)(0x698DC39C)
+I (C:\Users\User\AppData\Local\Arm\Packs\Milandr\MDR32FxQI\1.3.2\Libraries\CMSIS\MDR32FxQI\CoreSupport\CM3\core_cmInstr.h)(0x698DC39C)
+I (C:\Users\User\AppData\Local\Arm\Packs\Milandr\MDR32FxQI\1.3.2\Libraries\CMSIS\MDR32FxQI\CoreSupport\CM3\core_cmFunc.h)(0x698DC39C)
+I (RTE\Device\MDR32F9Q2I\system_MDR32F9Q2I.h)(0x698DC39C)
+F (RTE/Device/MDR32F9Q2I/system_MDR32F9Q2I.h)(0x698DC39C)()
+F (C:/Users/User/AppData/Local/Arm/Packs/Milandr/MDR32FxQI/1.3.2/Libraries/SPL/MDR32FxQI/src/MDR32FxQI_adc.c)(0x698DC39C)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m3 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__EVAL -gdwarf-4 -O0 -ffunction-sections -Wall -Wextra -Wno-packed -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ./inc -Wno-unused-parameter-I./RTE/Device/MDR32F9Q2I-I./RTE/_Target_1-IC:/Users/User/AppData/Local/Arm/Packs/Milandr/MDR32FxQI/1.3.2/Libraries/CMSIS/MDR32FxQI/CoreSupport/CM3-IC:/Users/User/AppData/Local/Arm/Packs/Milandr/MDR32FxQI/1.3.2/Libraries/CMSIS/MDR32FxQI/DeviceSupport/MDR32F9Q2I/inc-IC:/Users/User/AppData/Local/Arm/Packs/Milandr/MDR32FxQI/1.3.2/Libraries/SPL/MDR32FxQI/inc-IC:/Users/User/AppData/Local/Arm/Packs/Milandr/MDR32FxQI/1.3.2/Libraries/SPL/MDR32FxQI/inc/USB_Library-D__UVISION_VERSION="543" -D_RTE_-o ./objects/mdr32fxqi_adc.o -MMD)
+I (C:\Users\User\AppData\Local\Arm\Packs\Milandr\MDR32FxQI\1.3.2\Libraries\SPL\MDR32FxQI\inc\MDR32FxQI_adc.h)(0x698DC39C)
+I (RTE\Device\MDR32F9Q2I\MDR32FxQI_config.h)(0x69BACF21)
+I (RTE\_Target_1\RTE_Components.h)(0x69BAC6EB)
+I (C:\Users\User\AppData\Local\Arm\Packs\Milandr\MDR32FxQI\1.3.2\Libraries\CMSIS\MDR32FxQI\DeviceSupport\MDR32F9Q2I\inc\MDR32F9Q2I.h)(0x698DC39C)
+I (C:\Users\User\AppData\Local\Arm\Packs\Milandr\MDR32FxQI\1.3.2\Libraries\CMSIS\MDR32FxQI\CoreSupport\CM3\core_cm3.h)(0x698DC39C)
+I (C:\Users\User\AppData\Local\Arm\Packs\Milandr\MDR32FxQI\1.3.2\Libraries\CMSIS\MDR32FxQI\CoreSupport\CM3\core_cmInstr.h)(0x698DC39C)
+I (C:\Users\User\AppData\Local\Arm\Packs\Milandr\MDR32FxQI\1.3.2\Libraries\CMSIS\MDR32FxQI\CoreSupport\CM3\core_cmFunc.h)(0x698DC39C)
+I (RTE\Device\MDR32F9Q2I\system_MDR32F9Q2I.h)(0x698DC39C)
+F (C:/Users/User/AppData/Local/Arm/Packs/Milandr/MDR32FxQI/1.3.2/Libraries/SPL/MDR32FxQI/src/MDR32FxQI_asm.S)(0x698DC39C)(--target=arm-arm-none-eabi -mcpu=cortex-m3 -masm=auto  -Wa,armasm,--diag_suppress=A1950W -c-gdwarf-4 -D__EVAL -MMD-I./RTE/Device/MDR32F9Q2I-I./RTE/_Target_1-IC:/Users/User/AppData/Local/Arm/Packs/Milandr/MDR32FxQI/1.3.2/Libraries/CMSIS/MDR32FxQI/CoreSupport/CM3-IC:/Users/User/AppData/Local/Arm/Packs/Milandr/MDR32FxQI/1.3.2/Libraries/CMSIS/MDR32FxQI/DeviceSupport/MDR32F9Q2I/inc-IC:/Users/User/AppData/Local/Arm/Packs/Milandr/MDR32FxQI/1.3.2/Libraries/SPL/MDR32FxQI/inc-IC:/Users/User/AppData/Local/Arm/Packs/Milandr/MDR32FxQI/1.3.2/Libraries/SPL/MDR32FxQI/inc/USB_Library-D__UVISION_VERSION=543 -D_RTE_-o ./objects/mdr32fxqi_asm.o)
+F (C:/Users/User/AppData/Local/Arm/Packs/Milandr/MDR32FxQI/1.3.2/Libraries/SPL/MDR32FxQI/src/MDR32FxQI_bkp.c)(0x698DC39C)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m3 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__EVAL -gdwarf-4 -O0 -ffunction-sections -Wall -Wextra -Wno-packed -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ./inc -Wno-unused-parameter-I./RTE/Device/MDR32F9Q2I-I./RTE/_Target_1-IC:/Users/User/AppData/Local/Arm/Packs/Milandr/MDR32FxQI/1.3.2/Libraries/CMSIS/MDR32FxQI/CoreSupport/CM3-IC:/Users/User/AppData/Local/Arm/Packs/Milandr/MDR32FxQI/1.3.2/Libraries/CMSIS/MDR32FxQI/DeviceSupport/MDR32F9Q2I/inc-IC:/Users/User/AppData/Local/Arm/Packs/Milandr/MDR32FxQI/1.3.2/Libraries/SPL/MDR32FxQI/inc-IC:/Users/User/AppData/Local/Arm/Packs/Milandr/MDR32FxQI/1.3.2/Libraries/SPL/MDR32FxQI/inc/USB_Library-D__UVISION_VERSION="543" -D_RTE_-o ./objects/mdr32fxqi_bkp.o -MMD)
+I (C:\Users\User\AppData\Local\Arm\Packs\Milandr\MDR32FxQI\1.3.2\Libraries\SPL\MDR32FxQI\inc\MDR32FxQI_bkp.h)(0x698DC39C)
+I (RTE\Device\MDR32F9Q2I\MDR32FxQI_config.h)(0x69BACF21)
+I (RTE\_Target_1\RTE_Components.h)(0x69BAC6EB)
+I (C:\Users\User\AppData\Local\Arm\Packs\Milandr\MDR32FxQI\1.3.2\Libraries\CMSIS\MDR32FxQI\DeviceSupport\MDR32F9Q2I\inc\MDR32F9Q2I.h)(0x698DC39C)
+I (C:\Users\User\AppData\Local\Arm\Packs\Milandr\MDR32FxQI\1.3.2\Libraries\CMSIS\MDR32FxQI\CoreSupport\CM3\core_cm3.h)(0x698DC39C)
+I (C:\Users\User\AppData\Local\Arm\Packs\Milandr\MDR32FxQI\1.3.2\Libraries\CMSIS\MDR32FxQI\CoreSupport\CM3\core_cmInstr.h)(0x698DC39C)
+I (C:\Users\User\AppData\Local\Arm\Packs\Milandr\MDR32FxQI\1.3.2\Libraries\CMSIS\MDR32FxQI\CoreSupport\CM3\core_cmFunc.h)(0x698DC39C)
+I (RTE\Device\MDR32F9Q2I\system_MDR32F9Q2I.h)(0x698DC39C)
+F (C:/Users/User/AppData/Local/Arm/Packs/Milandr/MDR32FxQI/1.3.2/Libraries/SPL/MDR32FxQI/src/MDR32FxQI_dac.c)(0x698DC39C)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m3 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__EVAL -gdwarf-4 -O0 -ffunction-sections -Wall -Wextra -Wno-packed -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ./inc -Wno-unused-parameter-I./RTE/Device/MDR32F9Q2I-I./RTE/_Target_1-IC:/Users/User/AppData/Local/Arm/Packs/Milandr/MDR32FxQI/1.3.2/Libraries/CMSIS/MDR32FxQI/CoreSupport/CM3-IC:/Users/User/AppData/Local/Arm/Packs/Milandr/MDR32FxQI/1.3.2/Libraries/CMSIS/MDR32FxQI/DeviceSupport/MDR32F9Q2I/inc-IC:/Users/User/AppData/Local/Arm/Packs/Milandr/MDR32FxQI/1.3.2/Libraries/SPL/MDR32FxQI/inc-IC:/Users/User/AppData/Local/Arm/Packs/Milandr/MDR32FxQI/1.3.2/Libraries/SPL/MDR32FxQI/inc/USB_Library-D__UVISION_VERSION="543" -D_RTE_-o ./objects/mdr32fxqi_dac.o -MMD)
+I (C:\Users\User\AppData\Local\Arm\Packs\Milandr\MDR32FxQI\1.3.2\Libraries\SPL\MDR32FxQI\inc\MDR32FxQI_dac.h)(0x698DC39C)
+I (RTE\Device\MDR32F9Q2I\MDR32FxQI_config.h)(0x69BACF21)
+I (RTE\_Target_1\RTE_Components.h)(0x69BAC6EB)
+I (C:\Users\User\AppData\Local\Arm\Packs\Milandr\MDR32FxQI\1.3.2\Libraries\CMSIS\MDR32FxQI\DeviceSupport\MDR32F9Q2I\inc\MDR32F9Q2I.h)(0x698DC39C)
+I (C:\Users\User\AppData\Local\Arm\Packs\Milandr\MDR32FxQI\1.3.2\Libraries\CMSIS\MDR32FxQI\CoreSupport\CM3\core_cm3.h)(0x698DC39C)
+I (C:\Users\User\AppData\Local\Arm\Packs\Milandr\MDR32FxQI\1.3.2\Libraries\CMSIS\MDR32FxQI\CoreSupport\CM3\core_cmInstr.h)(0x698DC39C)
+I (C:\Users\User\AppData\Local\Arm\Packs\Milandr\MDR32FxQI\1.3.2\Libraries\CMSIS\MDR32FxQI\CoreSupport\CM3\core_cmFunc.h)(0x698DC39C)
+I (RTE\Device\MDR32F9Q2I\system_MDR32F9Q2I.h)(0x698DC39C)
+F (C:/Users/User/AppData/Local/Arm/Packs/Milandr/MDR32FxQI/1.3.2/Libraries/SPL/MDR32FxQI/src/MDR32FxQI_dma.c)(0x698DC39C)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m3 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__EVAL -gdwarf-4 -O0 -ffunction-sections -Wall -Wextra -Wno-packed -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ./inc -Wno-unused-parameter-I./RTE/Device/MDR32F9Q2I-I./RTE/_Target_1-IC:/Users/User/AppData/Local/Arm/Packs/Milandr/MDR32FxQI/1.3.2/Libraries/CMSIS/MDR32FxQI/CoreSupport/CM3-IC:/Users/User/AppData/Local/Arm/Packs/Milandr/MDR32FxQI/1.3.2/Libraries/CMSIS/MDR32FxQI/DeviceSupport/MDR32F9Q2I/inc-IC:/Users/User/AppData/Local/Arm/Packs/Milandr/MDR32FxQI/1.3.2/Libraries/SPL/MDR32FxQI/inc-IC:/Users/User/AppData/Local/Arm/Packs/Milandr/MDR32FxQI/1.3.2/Libraries/SPL/MDR32FxQI/inc/USB_Library-D__UVISION_VERSION="543" -D_RTE_-o ./objects/mdr32fxqi_dma.o -MMD)
+I (C:\Users\User\AppData\Local\Arm\Packs\Milandr\MDR32FxQI\1.3.2\Libraries\SPL\MDR32FxQI\inc\MDR32FxQI_dma.h)(0x698DC39C)
+I (RTE\Device\MDR32F9Q2I\MDR32FxQI_config.h)(0x69BACF21)
+I (RTE\_Target_1\RTE_Components.h)(0x69BAC6EB)
+I (C:\Users\User\AppData\Local\Arm\Packs\Milandr\MDR32FxQI\1.3.2\Libraries\CMSIS\MDR32FxQI\DeviceSupport\MDR32F9Q2I\inc\MDR32F9Q2I.h)(0x698DC39C)
+I (C:\Users\User\AppData\Local\Arm\Packs\Milandr\MDR32FxQI\1.3.2\Libraries\CMSIS\MDR32FxQI\CoreSupport\CM3\core_cm3.h)(0x698DC39C)
+I (C:\Users\User\AppData\Local\Arm\Packs\Milandr\MDR32FxQI\1.3.2\Libraries\CMSIS\MDR32FxQI\CoreSupport\CM3\core_cmInstr.h)(0x698DC39C)
+I (C:\Users\User\AppData\Local\Arm\Packs\Milandr\MDR32FxQI\1.3.2\Libraries\CMSIS\MDR32FxQI\CoreSupport\CM3\core_cmFunc.h)(0x698DC39C)
+I (RTE\Device\MDR32F9Q2I\system_MDR32F9Q2I.h)(0x698DC39C)
+F (C:/Users/User/AppData/Local/Arm/Packs/Milandr/MDR32FxQI/1.3.2/Libraries/SPL/MDR32FxQI/src/MDR32FxQI_eeprom.c)(0x698DC39C)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m3 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__EVAL -gdwarf-4 -O0 -ffunction-sections -Wall -Wextra -Wno-packed -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ./inc -Wno-unused-parameter-I./RTE/Device/MDR32F9Q2I-I./RTE/_Target_1-IC:/Users/User/AppData/Local/Arm/Packs/Milandr/MDR32FxQI/1.3.2/Libraries/CMSIS/MDR32FxQI/CoreSupport/CM3-IC:/Users/User/AppData/Local/Arm/Packs/Milandr/MDR32FxQI/1.3.2/Libraries/CMSIS/MDR32FxQI/DeviceSupport/MDR32F9Q2I/inc-IC:/Users/User/AppData/Local/Arm/Packs/Milandr/MDR32FxQI/1.3.2/Libraries/SPL/MDR32FxQI/inc-IC:/Users/User/AppData/Local/Arm/Packs/Milandr/MDR32FxQI/1.3.2/Libraries/SPL/MDR32FxQI/inc/USB_Library-D__UVISION_VERSION="543" -D_RTE_-o ./objects/mdr32fxqi_eeprom.o -MMD)
+I (C:\Users\User\AppData\Local\Arm\Packs\Milandr\MDR32FxQI\1.3.2\Libraries\SPL\MDR32FxQI\inc\MDR32FxQI_eeprom.h)(0x698DC39C)
+I (RTE\Device\MDR32F9Q2I\MDR32FxQI_config.h)(0x69BACF21)
+I (RTE\_Target_1\RTE_Components.h)(0x69BAC6EB)
+I (C:\Users\User\AppData\Local\Arm\Packs\Milandr\MDR32FxQI\1.3.2\Libraries\CMSIS\MDR32FxQI\DeviceSupport\MDR32F9Q2I\inc\MDR32F9Q2I.h)(0x698DC39C)
+I (C:\Users\User\AppData\Local\Arm\Packs\Milandr\MDR32FxQI\1.3.2\Libraries\CMSIS\MDR32FxQI\CoreSupport\CM3\core_cm3.h)(0x698DC39C)
+I (C:\Users\User\AppData\Local\Arm\Packs\Milandr\MDR32FxQI\1.3.2\Libraries\CMSIS\MDR32FxQI\CoreSupport\CM3\core_cmInstr.h)(0x698DC39C)
+I (C:\Users\User\AppData\Local\Arm\Packs\Milandr\MDR32FxQI\1.3.2\Libraries\CMSIS\MDR32FxQI\CoreSupport\CM3\core_cmFunc.h)(0x698DC39C)
+I (RTE\Device\MDR32F9Q2I\system_MDR32F9Q2I.h)(0x698DC39C)
+I (C:\Users\User\AppData\Local\Arm\Packs\Milandr\MDR32FxQI\1.3.2\Libraries\SPL\MDR32FxQI\inc\MDR32FxQI_utils.h)(0x698DC39C)
+F (C:/Users/User/AppData/Local/Arm/Packs/Milandr/MDR32FxQI/1.3.2/Libraries/SPL/MDR32FxQI/src/MDR32FxQI_port.c)(0x698DC39C)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m3 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__EVAL -gdwarf-4 -O0 -ffunction-sections -Wall -Wextra -Wno-packed -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ./inc -Wno-unused-parameter-I./RTE/Device/MDR32F9Q2I-I./RTE/_Target_1-IC:/Users/User/AppData/Local/Arm/Packs/Milandr/MDR32FxQI/1.3.2/Libraries/CMSIS/MDR32FxQI/CoreSupport/CM3-IC:/Users/User/AppData/Local/Arm/Packs/Milandr/MDR32FxQI/1.3.2/Libraries/CMSIS/MDR32FxQI/DeviceSupport/MDR32F9Q2I/inc-IC:/Users/User/AppData/Local/Arm/Packs/Milandr/MDR32FxQI/1.3.2/Libraries/SPL/MDR32FxQI/inc-IC:/Users/User/AppData/Local/Arm/Packs/Milandr/MDR32FxQI/1.3.2/Libraries/SPL/MDR32FxQI/inc/USB_Library-D__UVISION_VERSION="543" -D_RTE_-o ./objects/mdr32fxqi_port.o -MMD)
+I (C:\Users\User\AppData\Local\Arm\Packs\Milandr\MDR32FxQI\1.3.2\Libraries\SPL\MDR32FxQI\inc\MDR32FxQI_port.h)(0x698DC39C)
+I (RTE\Device\MDR32F9Q2I\MDR32FxQI_config.h)(0x69BACF21)
+I (RTE\_Target_1\RTE_Components.h)(0x69BAC6EB)
+I (C:\Users\User\AppData\Local\Arm\Packs\Milandr\MDR32FxQI\1.3.2\Libraries\CMSIS\MDR32FxQI\DeviceSupport\MDR32F9Q2I\inc\MDR32F9Q2I.h)(0x698DC39C)
+I (C:\Users\User\AppData\Local\Arm\Packs\Milandr\MDR32FxQI\1.3.2\Libraries\CMSIS\MDR32FxQI\CoreSupport\CM3\core_cm3.h)(0x698DC39C)
+I (C:\Users\User\AppData\Local\Arm\Packs\Milandr\MDR32FxQI\1.3.2\Libraries\CMSIS\MDR32FxQI\CoreSupport\CM3\core_cmInstr.h)(0x698DC39C)
+I (C:\Users\User\AppData\Local\Arm\Packs\Milandr\MDR32FxQI\1.3.2\Libraries\CMSIS\MDR32FxQI\CoreSupport\CM3\core_cmFunc.h)(0x698DC39C)
+I (RTE\Device\MDR32F9Q2I\system_MDR32F9Q2I.h)(0x698DC39C)
+F (C:/Users/User/AppData/Local/Arm/Packs/Milandr/MDR32FxQI/1.3.2/Libraries/SPL/MDR32FxQI/src/MDR32FxQI_power.c)(0x698DC39C)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m3 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__EVAL -gdwarf-4 -O0 -ffunction-sections -Wall -Wextra -Wno-packed -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ./inc -Wno-unused-parameter-I./RTE/Device/MDR32F9Q2I-I./RTE/_Target_1-IC:/Users/User/AppData/Local/Arm/Packs/Milandr/MDR32FxQI/1.3.2/Libraries/CMSIS/MDR32FxQI/CoreSupport/CM3-IC:/Users/User/AppData/Local/Arm/Packs/Milandr/MDR32FxQI/1.3.2/Libraries/CMSIS/MDR32FxQI/DeviceSupport/MDR32F9Q2I/inc-IC:/Users/User/AppData/Local/Arm/Packs/Milandr/MDR32FxQI/1.3.2/Libraries/SPL/MDR32FxQI/inc-IC:/Users/User/AppData/Local/Arm/Packs/Milandr/MDR32FxQI/1.3.2/Libraries/SPL/MDR32FxQI/inc/USB_Library-D__UVISION_VERSION="543" -D_RTE_-o ./objects/mdr32fxqi_power.o -MMD)
+I (C:\Users\User\AppData\Local\Arm\Packs\Milandr\MDR32FxQI\1.3.2\Libraries\SPL\MDR32FxQI\inc\MDR32FxQI_power.h)(0x698DC39C)
+I (RTE\Device\MDR32F9Q2I\MDR32FxQI_config.h)(0x69BACF21)
+I (RTE\_Target_1\RTE_Components.h)(0x69BAC6EB)
+I (C:\Users\User\AppData\Local\Arm\Packs\Milandr\MDR32FxQI\1.3.2\Libraries\CMSIS\MDR32FxQI\DeviceSupport\MDR32F9Q2I\inc\MDR32F9Q2I.h)(0x698DC39C)
+I (C:\Users\User\AppData\Local\Arm\Packs\Milandr\MDR32FxQI\1.3.2\Libraries\CMSIS\MDR32FxQI\CoreSupport\CM3\core_cm3.h)(0x698DC39C)
+I (C:\Users\User\AppData\Local\Arm\Packs\Milandr\MDR32FxQI\1.3.2\Libraries\CMSIS\MDR32FxQI\CoreSupport\CM3\core_cmInstr.h)(0x698DC39C)
+I (C:\Users\User\AppData\Local\Arm\Packs\Milandr\MDR32FxQI\1.3.2\Libraries\CMSIS\MDR32FxQI\CoreSupport\CM3\core_cmFunc.h)(0x698DC39C)
+I (RTE\Device\MDR32F9Q2I\system_MDR32F9Q2I.h)(0x698DC39C)
+F (C:/Users/User/AppData/Local/Arm/Packs/Milandr/MDR32FxQI/1.3.2/Libraries/SPL/MDR32FxQI/src/MDR32FxQI_rst_clk.c)(0x698DC39C)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m3 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__EVAL -gdwarf-4 -O0 -ffunction-sections -Wall -Wextra -Wno-packed -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ./inc -Wno-unused-parameter-I./RTE/Device/MDR32F9Q2I-I./RTE/_Target_1-IC:/Users/User/AppData/Local/Arm/Packs/Milandr/MDR32FxQI/1.3.2/Libraries/CMSIS/MDR32FxQI/CoreSupport/CM3-IC:/Users/User/AppData/Local/Arm/Packs/Milandr/MDR32FxQI/1.3.2/Libraries/CMSIS/MDR32FxQI/DeviceSupport/MDR32F9Q2I/inc-IC:/Users/User/AppData/Local/Arm/Packs/Milandr/MDR32FxQI/1.3.2/Libraries/SPL/MDR32FxQI/inc-IC:/Users/User/AppData/Local/Arm/Packs/Milandr/MDR32FxQI/1.3.2/Libraries/SPL/MDR32FxQI/inc/USB_Library-D__UVISION_VERSION="543" -D_RTE_-o ./objects/mdr32fxqi_rst_clk.o -MMD)
+I (C:\Users\User\AppData\Local\Arm\Packs\Milandr\MDR32FxQI\1.3.2\Libraries\SPL\MDR32FxQI\inc\MDR32FxQI_rst_clk.h)(0x698DC39C)
+I (RTE\Device\MDR32F9Q2I\MDR32FxQI_config.h)(0x69BACF21)
+I (RTE\_Target_1\RTE_Components.h)(0x69BAC6EB)
+I (C:\Users\User\AppData\Local\Arm\Packs\Milandr\MDR32FxQI\1.3.2\Libraries\CMSIS\MDR32FxQI\DeviceSupport\MDR32F9Q2I\inc\MDR32F9Q2I.h)(0x698DC39C)
+I (C:\Users\User\AppData\Local\Arm\Packs\Milandr\MDR32FxQI\1.3.2\Libraries\CMSIS\MDR32FxQI\CoreSupport\CM3\core_cm3.h)(0x698DC39C)
+I (C:\Users\User\AppData\Local\Arm\Packs\Milandr\MDR32FxQI\1.3.2\Libraries\CMSIS\MDR32FxQI\CoreSupport\CM3\core_cmInstr.h)(0x698DC39C)
+I (C:\Users\User\AppData\Local\Arm\Packs\Milandr\MDR32FxQI\1.3.2\Libraries\CMSIS\MDR32FxQI\CoreSupport\CM3\core_cmFunc.h)(0x698DC39C)
+I (RTE\Device\MDR32F9Q2I\system_MDR32F9Q2I.h)(0x698DC39C)
+F (C:/Users/User/AppData/Local/Arm/Packs/Milandr/MDR32FxQI/1.3.2/Libraries/SPL/MDR32FxQI/src/MDR32FxQI_timer.c)(0x698DC39C)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m3 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__EVAL -gdwarf-4 -O0 -ffunction-sections -Wall -Wextra -Wno-packed -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ./inc -Wno-unused-parameter-I./RTE/Device/MDR32F9Q2I-I./RTE/_Target_1-IC:/Users/User/AppData/Local/Arm/Packs/Milandr/MDR32FxQI/1.3.2/Libraries/CMSIS/MDR32FxQI/CoreSupport/CM3-IC:/Users/User/AppData/Local/Arm/Packs/Milandr/MDR32FxQI/1.3.2/Libraries/CMSIS/MDR32FxQI/DeviceSupport/MDR32F9Q2I/inc-IC:/Users/User/AppData/Local/Arm/Packs/Milandr/MDR32FxQI/1.3.2/Libraries/SPL/MDR32FxQI/inc-IC:/Users/User/AppData/Local/Arm/Packs/Milandr/MDR32FxQI/1.3.2/Libraries/SPL/MDR32FxQI/inc/USB_Library-D__UVISION_VERSION="543" -D_RTE_-o ./objects/mdr32fxqi_timer.o -MMD)
+I (C:\Users\User\AppData\Local\Arm\Packs\Milandr\MDR32FxQI\1.3.2\Libraries\SPL\MDR32FxQI\inc\MDR32FxQI_timer.h)(0x698DC39C)
+I (RTE\Device\MDR32F9Q2I\MDR32FxQI_config.h)(0x69BACF21)
+I (RTE\_Target_1\RTE_Components.h)(0x69BAC6EB)
+I (C:\Users\User\AppData\Local\Arm\Packs\Milandr\MDR32FxQI\1.3.2\Libraries\CMSIS\MDR32FxQI\DeviceSupport\MDR32F9Q2I\inc\MDR32F9Q2I.h)(0x698DC39C)
+I (C:\Users\User\AppData\Local\Arm\Packs\Milandr\MDR32FxQI\1.3.2\Libraries\CMSIS\MDR32FxQI\CoreSupport\CM3\core_cm3.h)(0x698DC39C)
+I (C:\Users\User\AppData\Local\Arm\Packs\Milandr\MDR32FxQI\1.3.2\Libraries\CMSIS\MDR32FxQI\CoreSupport\CM3\core_cmInstr.h)(0x698DC39C)
+I (C:\Users\User\AppData\Local\Arm\Packs\Milandr\MDR32FxQI\1.3.2\Libraries\CMSIS\MDR32FxQI\CoreSupport\CM3\core_cmFunc.h)(0x698DC39C)
+I (RTE\Device\MDR32F9Q2I\system_MDR32F9Q2I.h)(0x698DC39C)
+F (C:/Users/User/AppData/Local/Arm/Packs/Milandr/MDR32FxQI/1.3.2/Libraries/SPL/MDR32FxQI/src/MDR32FxQI_usb.c)(0x698DC39C)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m3 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__EVAL -gdwarf-4 -O0 -ffunction-sections -Wall -Wextra -Wno-packed -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ./inc -Wno-unused-parameter-I./RTE/Device/MDR32F9Q2I-I./RTE/_Target_1-IC:/Users/User/AppData/Local/Arm/Packs/Milandr/MDR32FxQI/1.3.2/Libraries/CMSIS/MDR32FxQI/CoreSupport/CM3-IC:/Users/User/AppData/Local/Arm/Packs/Milandr/MDR32FxQI/1.3.2/Libraries/CMSIS/MDR32FxQI/DeviceSupport/MDR32F9Q2I/inc-IC:/Users/User/AppData/Local/Arm/Packs/Milandr/MDR32FxQI/1.3.2/Libraries/SPL/MDR32FxQI/inc-IC:/Users/User/AppData/Local/Arm/Packs/Milandr/MDR32FxQI/1.3.2/Libraries/SPL/MDR32FxQI/inc/USB_Library-D__UVISION_VERSION="543" -D_RTE_-o ./objects/mdr32fxqi_usb.o -MMD)
+I (C:\Users\User\AppData\Local\Arm\Packs\Milandr\MDR32FxQI\1.3.2\Libraries\SPL\MDR32FxQI\inc\MDR32FxQI_usb.h)(0x698DC39C)
+I (RTE\Device\MDR32F9Q2I\MDR32FxQI_config.h)(0x69BACF21)
+I (RTE\_Target_1\RTE_Components.h)(0x69BAC6EB)
+I (C:\Users\User\AppData\Local\Arm\Packs\Milandr\MDR32FxQI\1.3.2\Libraries\CMSIS\MDR32FxQI\DeviceSupport\MDR32F9Q2I\inc\MDR32F9Q2I.h)(0x698DC39C)
+I (C:\Users\User\AppData\Local\Arm\Packs\Milandr\MDR32FxQI\1.3.2\Libraries\CMSIS\MDR32FxQI\CoreSupport\CM3\core_cm3.h)(0x698DC39C)
+I (C:\Users\User\AppData\Local\Arm\Packs\Milandr\MDR32FxQI\1.3.2\Libraries\CMSIS\MDR32FxQI\CoreSupport\CM3\core_cmInstr.h)(0x698DC39C)
+I (C:\Users\User\AppData\Local\Arm\Packs\Milandr\MDR32FxQI\1.3.2\Libraries\CMSIS\MDR32FxQI\CoreSupport\CM3\core_cmFunc.h)(0x698DC39C)
+I (RTE\Device\MDR32F9Q2I\system_MDR32F9Q2I.h)(0x698DC39C)
+F (C:/Users/User/AppData/Local/Arm/Packs/Milandr/MDR32FxQI/1.3.2/Libraries/SPL/MDR32FxQI/src/MDR32FxQI_utils.c)(0x698DC39C)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m3 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__EVAL -gdwarf-4 -O0 -ffunction-sections -Wall -Wextra -Wno-packed -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ./inc -Wno-unused-parameter-I./RTE/Device/MDR32F9Q2I-I./RTE/_Target_1-IC:/Users/User/AppData/Local/Arm/Packs/Milandr/MDR32FxQI/1.3.2/Libraries/CMSIS/MDR32FxQI/CoreSupport/CM3-IC:/Users/User/AppData/Local/Arm/Packs/Milandr/MDR32FxQI/1.3.2/Libraries/CMSIS/MDR32FxQI/DeviceSupport/MDR32F9Q2I/inc-IC:/Users/User/AppData/Local/Arm/Packs/Milandr/MDR32FxQI/1.3.2/Libraries/SPL/MDR32FxQI/inc-IC:/Users/User/AppData/Local/Arm/Packs/Milandr/MDR32FxQI/1.3.2/Libraries/SPL/MDR32FxQI/inc/USB_Library-D__UVISION_VERSION="543" -D_RTE_-o ./objects/mdr32fxqi_utils.o -MMD)
+I (C:\Users\User\AppData\Local\Arm\Packs\Milandr\MDR32FxQI\1.3.2\Libraries\SPL\MDR32FxQI\inc\MDR32FxQI_utils.h)(0x698DC39C)
+I (RTE\Device\MDR32F9Q2I\MDR32FxQI_config.h)(0x69BACF21)
+I (RTE\_Target_1\RTE_Components.h)(0x69BAC6EB)
+I (C:\Users\User\AppData\Local\Arm\Packs\Milandr\MDR32FxQI\1.3.2\Libraries\CMSIS\MDR32FxQI\DeviceSupport\MDR32F9Q2I\inc\MDR32F9Q2I.h)(0x698DC39C)
+I (C:\Users\User\AppData\Local\Arm\Packs\Milandr\MDR32FxQI\1.3.2\Libraries\CMSIS\MDR32FxQI\CoreSupport\CM3\core_cm3.h)(0x698DC39C)
+I (C:\Users\User\AppData\Local\Arm\Packs\Milandr\MDR32FxQI\1.3.2\Libraries\CMSIS\MDR32FxQI\CoreSupport\CM3\core_cmInstr.h)(0x698DC39C)
+I (C:\Users\User\AppData\Local\Arm\Packs\Milandr\MDR32FxQI\1.3.2\Libraries\CMSIS\MDR32FxQI\CoreSupport\CM3\core_cmFunc.h)(0x698DC39C)
+I (RTE\Device\MDR32F9Q2I\system_MDR32F9Q2I.h)(0x698DC39C)
+I (C:\Users\User\AppData\Local\Arm\Packs\Milandr\MDR32FxQI\1.3.2\Libraries\SPL\MDR32FxQI\inc\MDR32FxQI_rst_clk.h)(0x698DC39C)
+F (C:/Users/User/AppData/Local/Arm/Packs/Milandr/MDR32FxQI/1.3.2/Libraries/SPL/MDR32FxQI/src/USB_Library/MDR32FxQI_usb_CDC.c)(0x698DC39C)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m3 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__EVAL -gdwarf-4 -O0 -ffunction-sections -Wall -Wextra -Wno-packed -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ./inc -Wno-unused-parameter-I./RTE/Device/MDR32F9Q2I-I./RTE/_Target_1-IC:/Users/User/AppData/Local/Arm/Packs/Milandr/MDR32FxQI/1.3.2/Libraries/CMSIS/MDR32FxQI/CoreSupport/CM3-IC:/Users/User/AppData/Local/Arm/Packs/Milandr/MDR32FxQI/1.3.2/Libraries/CMSIS/MDR32FxQI/DeviceSupport/MDR32F9Q2I/inc-IC:/Users/User/AppData/Local/Arm/Packs/Milandr/MDR32FxQI/1.3.2/Libraries/SPL/MDR32FxQI/inc-IC:/Users/User/AppData/Local/Arm/Packs/Milandr/MDR32FxQI/1.3.2/Libraries/SPL/MDR32FxQI/inc/USB_Library-D__UVISION_VERSION="543" -D_RTE_-o ./objects/mdr32fxqi_usb_cdc.o -MMD)
+I (RTE\Device\MDR32F9Q2I\MDR32FxQI_config.h)(0x69BACF21)
+I (RTE\_Target_1\RTE_Components.h)(0x69BAC6EB)
+I (C:\Users\User\AppData\Local\Arm\Packs\Milandr\MDR32FxQI\1.3.2\Libraries\CMSIS\MDR32FxQI\DeviceSupport\MDR32F9Q2I\inc\MDR32F9Q2I.h)(0x698DC39C)
+I (C:\Users\User\AppData\Local\Arm\Packs\Milandr\MDR32FxQI\1.3.2\Libraries\CMSIS\MDR32FxQI\CoreSupport\CM3\core_cm3.h)(0x698DC39C)
+I (C:\Users\User\AppData\Local\Arm\Packs\Milandr\MDR32FxQI\1.3.2\Libraries\CMSIS\MDR32FxQI\CoreSupport\CM3\core_cmInstr.h)(0x698DC39C)
+I (C:\Users\User\AppData\Local\Arm\Packs\Milandr\MDR32FxQI\1.3.2\Libraries\CMSIS\MDR32FxQI\CoreSupport\CM3\core_cmFunc.h)(0x698DC39C)
+I (RTE\Device\MDR32F9Q2I\system_MDR32F9Q2I.h)(0x698DC39C)
+I (C:\Users\User\AppData\Local\Arm\Packs\Milandr\MDR32FxQI\1.3.2\Libraries\SPL\MDR32FxQI\inc\USB_Library\MDR32FxQI_usb_handlers.h)(0x698DC39C)
+I (C:\Users\User\AppData\Local\Arm\Packs\Milandr\MDR32FxQI\1.3.2\Libraries\SPL\MDR32FxQI\inc\USB_Library\MDR32FxQI_usb_default_handlers.h)(0x698DC39C)
+I (C:\Users\User\AppData\Local\Arm\Packs\Milandr\MDR32FxQI\1.3.2\Libraries\SPL\MDR32FxQI\inc\USB_Library\MDR32FxQI_usb_CDC.h)(0x698DC39C)
+I (C:\Users\User\AppData\Local\Arm\Packs\Milandr\MDR32FxQI\1.3.2\Libraries\SPL\MDR32FxQI\inc\USB_Library\MDR32FxQI_usb_device.h)(0x698DC39C)
+I (C:\Users\User\AppData\Local\Arm\Packs\Milandr\MDR32FxQI\1.3.2\Libraries\SPL\MDR32FxQI\inc\MDR32FxQI_usb.h)(0x698DC39C)
+F (C:/Users/User/AppData/Local/Arm/Packs/Milandr/MDR32FxQI/1.3.2/Libraries/SPL/MDR32FxQI/src/USB_Library/MDR32FxQI_usb_device.c)(0x698DC39C)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m3 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__EVAL -gdwarf-4 -O0 -ffunction-sections -Wall -Wextra -Wno-packed -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ./inc -Wno-unused-parameter-I./RTE/Device/MDR32F9Q2I-I./RTE/_Target_1-IC:/Users/User/AppData/Local/Arm/Packs/Milandr/MDR32FxQI/1.3.2/Libraries/CMSIS/MDR32FxQI/CoreSupport/CM3-IC:/Users/User/AppData/Local/Arm/Packs/Milandr/MDR32FxQI/1.3.2/Libraries/CMSIS/MDR32FxQI/DeviceSupport/MDR32F9Q2I/inc-IC:/Users/User/AppData/Local/Arm/Packs/Milandr/MDR32FxQI/1.3.2/Libraries/SPL/MDR32FxQI/inc-IC:/Users/User/AppData/Local/Arm/Packs/Milandr/MDR32FxQI/1.3.2/Libraries/SPL/MDR32FxQI/inc/USB_Library-D__UVISION_VERSION="543" -D_RTE_-o ./objects/mdr32fxqi_usb_device.o -MMD)
+I (RTE\Device\MDR32F9Q2I\MDR32FxQI_config.h)(0x69BACF21)
+I (RTE\_Target_1\RTE_Components.h)(0x69BAC6EB)
+I (C:\Users\User\AppData\Local\Arm\Packs\Milandr\MDR32FxQI\1.3.2\Libraries\CMSIS\MDR32FxQI\DeviceSupport\MDR32F9Q2I\inc\MDR32F9Q2I.h)(0x698DC39C)
+I (C:\Users\User\AppData\Local\Arm\Packs\Milandr\MDR32FxQI\1.3.2\Libraries\CMSIS\MDR32FxQI\CoreSupport\CM3\core_cm3.h)(0x698DC39C)
+I (C:\Users\User\AppData\Local\Arm\Packs\Milandr\MDR32FxQI\1.3.2\Libraries\CMSIS\MDR32FxQI\CoreSupport\CM3\core_cmInstr.h)(0x698DC39C)
+I (C:\Users\User\AppData\Local\Arm\Packs\Milandr\MDR32FxQI\1.3.2\Libraries\CMSIS\MDR32FxQI\CoreSupport\CM3\core_cmFunc.h)(0x698DC39C)
+I (RTE\Device\MDR32F9Q2I\system_MDR32F9Q2I.h)(0x698DC39C)
+I (C:\Users\User\AppData\Local\Arm\Packs\Milandr\MDR32FxQI\1.3.2\Libraries\SPL\MDR32FxQI\inc\USB_Library\MDR32FxQI_usb_handlers.h)(0x698DC39C)
+I (C:\Users\User\AppData\Local\Arm\Packs\Milandr\MDR32FxQI\1.3.2\Libraries\SPL\MDR32FxQI\inc\USB_Library\MDR32FxQI_usb_default_handlers.h)(0x698DC39C)
+I (C:\Users\User\AppData\Local\Arm\Packs\Milandr\MDR32FxQI\1.3.2\Libraries\SPL\MDR32FxQI\inc\USB_Library\MDR32FxQI_usb_CDC.h)(0x698DC39C)
+I (C:\Users\User\AppData\Local\Arm\Packs\Milandr\MDR32FxQI\1.3.2\Libraries\SPL\MDR32FxQI\inc\USB_Library\MDR32FxQI_usb_device.h)(0x698DC39C)
+I (C:\Users\User\AppData\Local\Arm\Packs\Milandr\MDR32FxQI\1.3.2\Libraries\SPL\MDR32FxQI\inc\MDR32FxQI_usb.h)(0x698DC39C)
