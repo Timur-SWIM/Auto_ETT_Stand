@@ -72,8 +72,10 @@ int main(void) {
 			//USB_SendTemperature(temperature);
 			
 			uint16_t adc_val = Get_Avg_ADC_value();
-            uint16_t temp = ADC_ToTemp(adc_val);
+			         uint16_t temp = ADC_ToTemp(adc_val);
 			USB_SendTemp(temp);
+			// Обновление скважности ШИМ через PID регулятор
+			PID_Update((int16_t)temp);
 		}	
 	}
 }

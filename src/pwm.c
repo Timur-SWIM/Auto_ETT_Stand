@@ -8,6 +8,11 @@ TIMER_ChnOutInitTypeDef sTIM_ChnOutInit;
 
 uint16_t CCR1_Val = 600+1;
 
+/* PID регулятор */
+static float pid_integral = 0.0f;
+static float pid_prev_error = 0.0f;
+static const int16_t pid_setpoint = (T_MIN + T_MAX) / 2; // целевая температура
+
 void PortInit(void) {
     /* Enable peripheral clocks */
     RST_CLK_PCLKcmd(RST_CLK_PCLK_PORTB, ENABLE);
@@ -79,4 +84,63 @@ void TimerInit(void) {
 
     /* Enable TIMER3 */
     TIMER_Cmd(MDR_TIMER3,ENABLE);
+}
+/**
+  * @brief Установка скважности ШИМ в процентах
+  * @param duty_percent Скважность от 0 до 100
+  */
+void PWM_SetDutyCycle(uint16_t duty_percent) {
+    // Ограничение по мёртвой зоне: не менее PWM_MIN_DUTY и не более PWM_MAX_DUTY
+    if (duty_percent < PWM_MIN_DUTY) {
+        duty_percent = PWM_MIN_DUTY;
+    } else if (duty_percent > PWM_MAX_DUTY) {
+        duty_percent = PWM_MAX_DUTY;
+    }
+    
+    // Перевод процентов в значение CCR1
+    // CCR1 = (duty_percent * (PWM_PERIOD - 1)) / 100
+    uint32_t ccr = ((uint32_t)duty_percent * (PWM_PERIOD - 1)) / 100;
+    CCR1_Val = (uint16_t)ccr;
+    
+    // Обновление регистра сравнения таймера
+    TIMER_SetChnCompare(MDR_TIMER3, TIMER_CHANNEL1, CCR1_Val);
+}
+
+/**
+  * @brief Обновление состояния PID регулятора и скважности ШИМ
+  * @param current_temp Текущая температура в градусах Цельсия
+  */
+void PID_Update(int16_t current_temp) {
+    float error = (float)(pid_setpoint - current_temp);
+    
+    // Пропорциональная составляющая
+    float p_term = PID_KP * error;
+    
+    // Интегральная составляющая
+    pid_integral += error;
+    // Антивинд‑ап: ограничение интеграла
+    const float integral_limit = 100.0f;
+    if (pid_integral > integral_limit) pid_integral = integral_limit;
+    if (pid_integral < -integral_limit) pid_integral = -integral_limit;
+    float i_term = PID_KI * pid_integral;
+    
+    // Дифференциальная составляющая
+    float d_term = PID_KD * (error - pid_prev_error);
+    pid_prev_error = error;
+    
+    // Суммарное управляющее воздействие
+    float output = p_term + i_term + d_term;
+    
+    // Преобразование в скважность (output - температура, нужно маппировать на проценты)
+    // Допустим, output в диапазоне [-50, +50] градусов, преобразуем в проценты:
+    // Скважность = 50% + output * коэффициент
+    // Коэффициент выберем так, чтобы изменение на 1 градус давало изменение скважности на 2%
+    const float scale = 2.0f;
+    float duty = 50.0f + output * scale;
+    
+    // Ограничение
+    if (duty < 0.0f) duty = 0.0f;
+    if (duty > 100.0f) duty = 100.0f;
+    
+    PWM_SetDutyCycle((uint16_t)duty);
 }
