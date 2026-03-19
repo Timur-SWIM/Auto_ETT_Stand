@@ -59,6 +59,8 @@ int main(void) {
 	adcInit();
 	PortInit();
 	TimerInit();
+    //LedPortInit();
+    //Timer_1_Init();
 	VCom_Configuration();
 	USB_CDC_Init(Buffer, 1 , SET);
 	Setup_USB();

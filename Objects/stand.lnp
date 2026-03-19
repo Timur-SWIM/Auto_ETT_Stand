@@ -3,6 +3,7 @@
 ".\objects\main.o"
 ".\objects\pwm.o"
 ".\objects\usb.o"
+".\objects\timer.o"
 ".\objects\startup_mdr32f9q2i.o"
 ".\objects\system_mdr32f9q2i.o"
 ".\objects\mdr32fxqi_adc.o"

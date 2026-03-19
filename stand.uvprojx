@@ -403,6 +403,11 @@
               <FileType>1</FileType>
               <FilePath>.\src\usb.c</FilePath>
             </File>
+            <File>
+              <FileName>timer.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\src\timer.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -427,6 +432,11 @@
               <FileName>usb.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\inc\usb.h</FilePath>
+            </File>
+            <File>
+              <FileName>timer.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\inc\timer.h</FilePath>
             </File>
           </Files>
         </Group>
