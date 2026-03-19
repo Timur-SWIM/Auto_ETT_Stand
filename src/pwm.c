@@ -111,7 +111,7 @@ void PWM_SetDutyCycle(uint16_t duty_percent) {
   * @param current_temp Текущая температура в градусах Цельсия
   */
 void PID_Update(int16_t current_temp) {
-    float error = (float)(pid_setpoint - current_temp);
+    float error = (float)(current_temp - pid_setpoint);
     
     // Пропорциональная составляющая
     float p_term = PID_KP * error;
