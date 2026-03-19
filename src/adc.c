@@ -113,29 +113,7 @@ void adcInit(void) {
 	/* Enable DMA IRQ */
     NVIC_EnableIRQ(DMA_IRQn);
 }
-/**
-uint16_t ADC_GetAverage(void)
-{
-    uint32_t sum = 0;
 
-    for(int i = 0; i < 10; i++)
-        sum += ADCConvertedValue[i];
-
-    return (sum / 10);
-}
-// Пока что программа неправильно переводить значение в температуру, надо узнать значение опорного напряжения ацп
-float ADC_ToTemperature(uint16_t adc)
-{
-    float voltage;
-    float temperature;
-
-    voltage = (adc / ADC_MAX_VALUE) * VREF;
-
-    temperature = voltage / LM35_SENSITIVITY;
-
-    return temperature;
-}
-*/
 uint16_t Get_Avg_ADC_value(void) {
     uint32_t sum = 0;
 
