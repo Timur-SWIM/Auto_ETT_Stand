@@ -7,3 +7,4 @@
 
 void LedPortInit(void);
 void Timer_1_Init(void);
+void TIMER1_IRQHandler(void);
