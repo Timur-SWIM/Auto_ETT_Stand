@@ -7,4 +7,5 @@
   C:\Users\User\AppData\Local\Arm\Packs\Milandr\MDR32FxQI\1.3.2\Libraries\CMSIS\MDR32FxQI\CoreSupport\CM3\core_cmInstr.h \
   C:\Users\User\AppData\Local\Arm\Packs\Milandr\MDR32FxQI\1.3.2\Libraries\CMSIS\MDR32FxQI\CoreSupport\CM3\core_cmFunc.h \
   RTE\Device\MDR32F9Q2I\system_MDR32F9Q2I.h \
-  C:\Users\User\AppData\Local\Arm\Packs\Milandr\MDR32FxQI\1.3.2\Libraries\SPL\MDR32FxQI\inc\MDR32FxQI_dma.h
+  C:\Users\User\AppData\Local\Arm\Packs\Milandr\MDR32FxQI\1.3.2\Libraries\SPL\MDR32FxQI\inc\MDR32FxQI_dma.h \
+  C:\Users\User\AppData\Local\Arm\Packs\Milandr\MDR32FxQI\1.3.2\Libraries\SPL\MDR32FxQI\inc\MDR32FxQI_rst_clk.h

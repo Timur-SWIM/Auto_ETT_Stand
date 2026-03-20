@@ -43,10 +43,7 @@ void ClockInit(void){
 	
 	RST_CLK_PCLKcmd((RST_CLK_PCLK_RST_CLK | 
 	                 RST_CLK_PCLK_SSP1 | 
-	                 RST_CLK_PCLK_SSP2 |
-	                 RST_CLK_PCLK_DMA |
-	                 RST_CLK_PCLK_ADC |
-	                 RST_CLK_PCLK_USB), 
+	                 RST_CLK_PCLK_SSP2), 
 	                 ENABLE);
 }
 
@@ -59,8 +56,8 @@ int main(void) {
 	adcInit();
 	PortInit();
 	TimerInit();
-    LedPortInit();
-    Timer_1_Init();
+    //LedPortInit();
+    //Timer_1_Init();
 	VCom_Configuration();
 	USB_CDC_Init(Buffer, 1 , SET);
 	Setup_USB();

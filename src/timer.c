@@ -29,10 +29,7 @@ void Timer_1_Init(void) {
 	/* Enable peripheral clocks */
 	RST_CLK_PCLKcmd(RST_CLK_PCLK_TIMER1, ENABLE);
 	/* Reset all TIM1 settings */
-	TIMER_DeInit(MDR_TIMER1);
-	
-	/* Set TIMER clock source (HCLK divider) */
-	TIMER_BRGInit(MDR_TIMER1, TIMER_HCLKdiv1);
+	TIMER_DeInit(MDR_TIMER1);	
 	
 	/* Init TIMx Counter */
 	sTIM_1_CntInit.TIMER_IniCounter        = 0;
@@ -49,16 +46,12 @@ void Timer_1_Init(void) {
     sTIM_1_CntInit.TIMER_BRK_Polarity      = TIMER_BRKPolarity_NonInverted;
     TIMER_CntInit(MDR_TIMER1, &sTIM_1_CntInit);
 
-    /* Channel initialization is not required for basic timer overflow interrupt */
-    /* Optionally disable channel if needed */
-    /* TIMER_ChnStructInit(&sTIM_1_ChnInit);
-    sTIM_1_ChnInit.TIMER_CH_Number = TIMER_CHANNEL1;
-    sTIM_1_ChnInit.TIMER_CH_Mode = TIMER_CH_MODE_PWM;
-    TIMER_ChnInit(MDR_TIMER1, &sTIM_1_ChnInit); */
-
     /* Clear pending flag and enable interrupt */
     TIMER_ClearFlag(MDR_TIMER1, TIMER_STATUS_CNT_ARR);
     TIMER_ITConfig(MDR_TIMER1, TIMER_STATUS_CNT_ARR, ENABLE);
+
+    /* Set TIMER clock source (HCLK divider) */
+	TIMER_BRGInit(MDR_TIMER1, TIMER_HCLKdiv1);
 
     /* Enable TIMER1 */
     TIMER_Cmd(MDR_TIMER1, ENABLE);

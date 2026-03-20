@@ -1,5 +1,6 @@
 #include "MDR32FxQI_adc.h"
 #include "MDR32FxQI_dma.h"
+#include "MDR32FxQI_rst_clk.h"
 
 #define ADC_MAX_VALUE      4095
 #define VREF               3300        // внутренний Vref MDR

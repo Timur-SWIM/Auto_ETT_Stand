@@ -30,6 +30,7 @@ void dmaInit(void) {
     NVIC->ICPR[0] = 0xFFFFFFFF;
     NVIC->ICER[0] = 0xFFFFFFFF;
 	/* DMA Configuration */
+    RST_CLK_PCLKcmd(RST_CLK_PCLK_DMA, ENABLE);
     /* Reset all settings */
     DMA_DeInit();
 
@@ -76,6 +77,7 @@ void dmaInit(void) {
 
 void adcInit(void) {
     /* ADC Configuration */
+    RST_CLK_PCLKcmd(RST_CLK_PCLK_ADC, ENABLE);
     /* Reset all ADC settings */
     ADC_DeInit();
 
