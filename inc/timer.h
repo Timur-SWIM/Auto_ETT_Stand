@@ -8,3 +8,5 @@
 void LedPortInit(void);
 void Timer_1_Init(void);
 void TIMER1_IRQHandler(void);
+
+extern volatile uint8_t usb_transmit_flag;

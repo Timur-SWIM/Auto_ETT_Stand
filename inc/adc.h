@@ -10,8 +10,6 @@ void DMA_IRQHandler(void);
 void dmaInit(void);
 void adcInit(void);
 
-//uint16_t ADC_GetAverage(void);
-//float ADC_ToTemperature(uint16_t adc);
 uint16_t Get_Avg_ADC_value(void);
 uint16_t ADC_ToTemp(uint16_t adc_val);
 

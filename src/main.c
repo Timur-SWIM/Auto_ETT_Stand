@@ -49,33 +49,26 @@ void ClockInit(void){
 
 #define BUFFER_LENGTH                        100
 static uint8_t Buffer[BUFFER_LENGTH];
-uint32_t usb_timer = 0;
 int main(void) {
 	ClockInit();
 	dmaInit();
 	adcInit();
 	PortInit();
 	TimerInit();
-    //LedPortInit();
-    //Timer_1_Init();
+    LedPortInit();
+    Timer_1_Init();
 	VCom_Configuration();
 	USB_CDC_Init(Buffer, 1 , SET);
 	Setup_USB();
 	while(1) {
-		usb_timer++;
-
-		if(usb_timer > 500000) {
-			usb_timer = 0;
-			//uint16_t adc_data = ADC_GetAverage();
-			//float temperature = ADC_ToTemperature(adc_data);
-			//USB_SendTemperature(temperature);
-			
-			uint16_t adc_val = Get_Avg_ADC_value();
-			         uint16_t temp = ADC_ToTemp(adc_val);
+        uint16_t adc_val = Get_Avg_ADC_value();
+		uint16_t temp = ADC_ToTemp(adc_val);
+        // Обновление скважности ШИМ через PID регулятор
+		PID_Update((int16_t)temp);
+		if(usb_transmit_flag) {
+			usb_transmit_flag = 0;
 			USB_SendTemp(temp);
-			// Обновление скважности ШИМ через PID регулятор
-			PID_Update((int16_t)temp);
-		}	
+		}
 	}
 }
 
