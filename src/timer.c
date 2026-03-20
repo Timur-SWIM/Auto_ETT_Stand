@@ -9,16 +9,16 @@ static volatile uint32_t LedState = 0;
 
 void LedPortInit(void) {
     /* Enable peripheral clocks */
-    //RST_CLK_PCLKcmd(RST_CLK_PCLK_PORTB, ENABLE);
+    RST_CLK_PCLKcmd(RST_CLK_PCLK_PORTB, ENABLE);
 
     /* Reset PORTB settings */
-    //PORT_DeInit(LED_PORT);	
+    PORT_DeInit(LED_PORT);
 	
 	/* Configure PORTB pin7 */
 	PORT_StructInit(&LED_PORT_InitStructure);
 	LED_PORT_InitStructure.PORT_Pin = LED;
 	LED_PORT_InitStructure.PORT_OE = PORT_OE_OUT;
-	LED_PORT_InitStructure.PORT_FUNC = PORT_FUNC_ALTER;
+	LED_PORT_InitStructure.PORT_FUNC = PORT_FUNC_PORT;
 	LED_PORT_InitStructure.PORT_MODE = PORT_MODE_DIGITAL;
 	LED_PORT_InitStructure.PORT_SPEED = PORT_SPEED_FAST;
 	
@@ -31,49 +31,37 @@ void Timer_1_Init(void) {
 	/* Reset all TIM1 settings */
 	TIMER_DeInit(MDR_TIMER1);
 	
-	/* Init TIMx Counter */
-	sTIM_1_CntInit.TIMER_Prescaler = 32000-1; 
-	sTIM_1_CntInit.TIMER_Period    = 1000+1;
-	sTIM_1_CntInit.TIMER_CounterMode = TIMER_CntMode_ClkFixedDir;
-	sTIM_1_CntInit.TIMER_CounterDirection = TIMER_CntDir_Up;
-    sTIM_1_CntInit.TIMER_EventSource      = TIMER_EvSrc_TIM_CLK;
-    sTIM_1_CntInit.TIMER_FilterSampling   = TIMER_FDTS_TIMER_CLK_div_1;
-    sTIM_1_CntInit.TIMER_ARR_UpdateMode   = TIMER_ARR_Update_Immediately;
-    sTIM_1_CntInit.TIMER_ETR_FilterConf   = TIMER_Filter_1FF_at_TIMER_CLK;
-    sTIM_1_CntInit.TIMER_ETR_Prescaler    = TIMER_ETR_Prescaler_None;
-    sTIM_1_CntInit.TIMER_ETR_Polarity     = TIMER_ETRPolarity_NonInverted;
-    sTIM_1_CntInit.TIMER_BRK_Polarity     = TIMER_BRKPolarity_NonInverted;
-    TIMER_CntInit(MDR_TIMER1,&sTIM_1_CntInit);
-
-    /* Initializes the TIMER1 Channel 1 */
-    TIMER_ChnStructInit(&sTIM_1_ChnInit);
-
-    sTIM_1_ChnInit.TIMER_CH_Mode       = TIMER_CH_MODE_CAPTURE;
-    sTIM_1_ChnInit.TIMER_CH_REF_Format = TIMER_CH_REF_Format6;
-    sTIM_1_ChnInit.TIMER_CH_Number     = TIMER_CHANNEL1;
-    TIMER_ChnInit(MDR_TIMER1, &sTIM_1_ChnInit);
-
-    //TIMER_SetChnCompare(MDR_TIMER1, TIMER_CHANNEL1, CCR1_Val);
+	/* Set TIMER clock source (HCLK divider) */
+	TIMER_BRGInit(MDR_TIMER1, TIMER_HCLKdiv1);
 	
-    /* Initializes the TIMER1 Channel 1 */
-    // TIMER_ChnOutStructInit(&sTIM_1_ChnOutInit);
-    // sTIM_1_ChnOutInit.TIMER_CH_DirOut_Polarity = TIMER_CHOPolarity_NonInverted;
-    // sTIM_1_ChnOutInit.TIMER_CH_DirOut_Source   = TIMER_CH_OutSrc_REF;
-    // sTIM_1_ChnOutInit.TIMER_CH_DirOut_Mode     = TIMER_CH_OutMode_Output;
-    // sTIM_1_ChnOutInit.TIMER_CH_NegOut_Polarity = TIMER_CHOPolarity_NonInverted;
-    // sTIM_1_ChnOutInit.TIMER_CH_NegOut_Source   = TIMER_CH_OutSrc_REF;
-    // sTIM_1_ChnOutInit.TIMER_CH_NegOut_Mode     = TIMER_CH_OutMode_Output;
-    // sTIM_1_ChnOutInit.TIMER_CH_Number          = TIMER_CHANNEL1;
-    // TIMER_ChnOutInit(MDR_TIMER1, &sTIM_1_ChnOutInit);	
+	/* Init TIMx Counter */
+	sTIM_1_CntInit.TIMER_IniCounter        = 0;
+	sTIM_1_CntInit.TIMER_Prescaler         = 7999;        /* Prescaler = 8000 - 1 */
+	sTIM_1_CntInit.TIMER_Period            = 9999;        /* Period = 10000 - 1 */
+	sTIM_1_CntInit.TIMER_CounterMode       = TIMER_CntMode_ClkFixedDir;
+	sTIM_1_CntInit.TIMER_CounterDirection  = TIMER_CntDir_Up;
+    sTIM_1_CntInit.TIMER_EventSource       = TIMER_EvSrc_TIM_CLK;
+    sTIM_1_CntInit.TIMER_FilterSampling    = TIMER_FDTS_TIMER_CLK_div_1;
+    sTIM_1_CntInit.TIMER_ARR_UpdateMode    = TIMER_ARR_Update_Immediately;
+    sTIM_1_CntInit.TIMER_ETR_FilterConf    = TIMER_Filter_1FF_at_TIMER_CLK;
+    sTIM_1_CntInit.TIMER_ETR_Prescaler     = TIMER_ETR_Prescaler_None;
+    sTIM_1_CntInit.TIMER_ETR_Polarity      = TIMER_ETRPolarity_NonInverted;
+    sTIM_1_CntInit.TIMER_BRK_Polarity      = TIMER_BRKPolarity_NonInverted;
+    TIMER_CntInit(MDR_TIMER1, &sTIM_1_CntInit);
 
-    /* Enable TIMER1 clock */
-    TIMER_BRGInit(MDR_TIMER1,TIMER_HCLKdiv1);
+    /* Channel initialization is not required for basic timer overflow interrupt */
+    /* Optionally disable channel if needed */
+    /* TIMER_ChnStructInit(&sTIM_1_ChnInit);
+    sTIM_1_ChnInit.TIMER_CH_Number = TIMER_CHANNEL1;
+    sTIM_1_ChnInit.TIMER_CH_Mode = TIMER_CH_MODE_PWM;
+    TIMER_ChnInit(MDR_TIMER1, &sTIM_1_ChnInit); */
 
+    /* Clear pending flag and enable interrupt */
     TIMER_ClearFlag(MDR_TIMER1, TIMER_STATUS_CNT_ARR);
-    TIMER_ITConfig(MDR_TIMER1, TIMER_IE_CNT_ARR_EVENT_IE, ENABLE);
+    TIMER_ITConfig(MDR_TIMER1, TIMER_STATUS_CNT_ARR, ENABLE);
 
     /* Enable TIMER1 */
-    TIMER_Cmd(MDR_TIMER1,ENABLE);
+    TIMER_Cmd(MDR_TIMER1, ENABLE);
     NVIC_EnableIRQ(Timer1_IRQn);
 }
 
