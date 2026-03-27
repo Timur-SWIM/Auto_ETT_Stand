@@ -3,6 +3,7 @@
 #include "MDR32FxQI_rst_clk.h"
 #include "MDR32FxQI_eeprom.h"
 #include "MDR32FxQI_bkp.h"
+#include "port.h"
 #include <stdio.h>
 
 void Setup_USB(void);

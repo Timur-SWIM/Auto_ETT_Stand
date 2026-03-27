@@ -1,5 +1,6 @@
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
+#include "port.h"
 
 void ClockInit(void){
     RST_CLK_DeInit();
@@ -56,10 +57,11 @@ int main(void) {
 	PortInit();
 	TimerInit();
     LedPortInit();
+    PortA_Init();
     Timer_1_Init();
     DAC_DMA_Init();
 	VCom_Configuration();
-	USB_CDC_Init(Buffer, 1 , SET);
+	USB_CDC_Init(Buffer, 6 , SET);
 	Setup_USB();
 	while(1) {
         uint16_t adc_val = Get_Avg_ADC_value();
@@ -68,7 +70,7 @@ int main(void) {
 		PID_Update((int16_t)temp);
 		if(usb_transmit_flag) {
 			usb_transmit_flag = 0;
-			USB_SendTemp(temp);
+			//USB_SendTemp(temp);
 		}
 	}
 }

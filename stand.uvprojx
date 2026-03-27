@@ -418,6 +418,11 @@
               <FileType>1</FileType>
               <FilePath>.\src\irq_dma.c</FilePath>
             </File>
+            <File>
+              <FileName>port.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\src\port.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -457,6 +462,11 @@
               <FileName>irq_dma.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\inc\irq_dma.h</FilePath>
+            </File>
+            <File>
+              <FileName>port.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\inc\port.h</FilePath>
             </File>
           </Files>
         </Group>

@@ -165,7 +165,28 @@ USB_Result USB_CDC_RecieveData(uint8_t* Buffer, uint32_t Length)
     ReceivedByteCount += Length;
 #endif /* USB_DEBUG_PROTO */
 
-    /* Send back received data portion */
+    /* Process received data */
+    if (Length >= 6)
+    {
+        /* Assume ASCII string of '0' and '1', first character corresponds to PA5 */
+        uint8_t bits = 0;
+        for (int i = 0; i < 6; i++)
+        {
+            char c = Buffer[i];
+            if (c == '1')
+            {
+                bits |= (1 << (5 - i));  // PA5 is bit5, PA0 is bit0
+            }
+            else if (c != '0')
+            {
+                /* Invalid character, ignore command */
+                break;
+            }
+        }
+        PortA_SetPins(bits);
+    }
+
+    /* Send back received data portion (echo) */
     result = USB_CDC_SendData(Buffer, Length);
 
 #ifdef USB_DEBUG_PROTO
