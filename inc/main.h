@@ -3,5 +3,6 @@
 #include "pwm.h"
 #include "usb.h"
 #include "timer.h"
+#include "dac.h"
 
 void ClockInit(void);

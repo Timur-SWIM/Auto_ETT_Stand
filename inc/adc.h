@@ -6,7 +6,6 @@
 #define VREF               3300        // внутренний Vref MDR
 #define LM35_SENSITIVITY   10       // 10 mV / °C
 
-void DMA_IRQHandler(void);
 void dmaInit(void);
 void adcInit(void);
 

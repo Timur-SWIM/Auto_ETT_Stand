@@ -7,24 +7,6 @@ DMA_ChannelInitTypeDef DMA_InitStr;
 DMA_CtrlDataInitTypeDef DMA_PriCtrlStr;
 DMA_CtrlDataInitTypeDef DMA_AltCtrlStr;
 
-/**
-  * @brief  DMA interrupt handler.
-  * @param  None
-  * @retval None
-  */
-void DMA_IRQHandler(void)
-{
-    /* Reconfigure the inactive DMA data structure */
-    if (DMA_GetFlagStatus(DMA_Channel_ADC2, DMA_FLAG_CHNL_ALT) == RESET)
-    {
-        DMA_ChannelReloadCycle(DMA_Channel_ADC2, DMA_CTRL_DATA_ALTERNATE, 10, DMA_Mode_PingPong);
-    }
-    else
-    {
-        DMA_ChannelReloadCycle(DMA_Channel_ADC2, DMA_CTRL_DATA_PRIMARY, 10, DMA_Mode_PingPong);
-    }
-}
-
 void dmaInit(void) {
     /* Disable all interrupt */
     NVIC->ICPR[0] = 0xFFFFFFFF;
