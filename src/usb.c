@@ -124,25 +124,8 @@ void VCom_Configuration(void)
 #endif /* USB_CDC_LINE_CODING_SUPPORTED */
 }
 
-//float CurrentTemperature = 20.0;
-/**
-void USB_SendTemperature(float temp)
-{
-    static uint8_t txBuffer[64];
-    
-    int len = sprintf((char*)txBuffer, "TEMP: %.2f C\r\n", temp);
-
-    USB_CDC_SendData(txBuffer, len);
-}
-*/
 void USB_SendTemp(uint16_t temp){
     static uint8_t txBuffer[64];
-	//temp = temp / 1;
-    //int temp_int = (int)temp;
-    //int temp_frac = (int)((temp - temp_int) * 100);
-
-    //if (temp_frac < 0) temp_frac = -temp_frac;
-
     int len = snprintf((char*)txBuffer, sizeof(txBuffer),
                        "TEMP: %d C\r\n",
                        temp);
@@ -159,7 +142,6 @@ void USB_SendTemp(uint16_t temp){
 USB_Result USB_CDC_RecieveData(uint8_t* Buffer, uint32_t Length)
 {
     USB_Result result;
-	//return USB_CDC_SendData(Buffer, Length);
 
 #ifdef USB_DEBUG_PROTO
     ReceivedByteCount += Length;
