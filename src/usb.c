@@ -1,46 +1,12 @@
-/**
-  ******************************************************************************
-  * @file   main.c
-  * @author  Milandr Application Team
-  * @version V2.0.3
-  * @date    11/04/2023
-  * @brief   Main program body.
-  ******************************************************************************
-  * <br><br>
-  *
-  * THE PRESENT FIRMWARE IS FOR GUIDANCE ONLY. IT AIMS AT PROVIDING CUSTOMERS
-  * WITH CODING INFORMATION REGARDING MILANDR'S PRODUCTS IN ORDER TO FACILITATE
-  * THE USE AND SAVE TIME. MILANDR SHALL NOT BE HELD LIABLE FOR ANY
-  * DIRECT, INDIRECT OR CONSEQUENTIAL DAMAGES RESULTING
-  * FROM THE CONTENT OF SUCH FIRMWARE AND/OR A USE MADE BY CUSTOMERS OF THE
-  * CODING INFORMATION CONTAINED HEREIN IN THEIR PRODUCTS.
-  *
-  * <h2><center>&copy; COPYRIGHT 2025 Milandr</center></h2>
-  */
-
 /* Includes ------------------------------------------------------------------*/
+
 #include "usb.h"
 
-/** @addtogroup __MDR32FxQI_StdPeriph_Examples MDR32FxQI StdPeriph Examples
-  * @{
-  */
-
-/** @addtogroup __MDR32F9Q2I_EVAL MDR32F9Q2I Evaluation Board
-  * @{
-  */
-
-/** @addtogroup  USB_Virtual_COM_Port_Echo_MDR32F9Q2I USB Virtual COM Port Echo
-  * @{
-  */
-
 /* Private define ------------------------------------------------------------*/
-//#define BUFFER_LENGTH                        100
 
 /* Private variables ---------------------------------------------------------*/
 USB_Clock_TypeDef USB_Clock_InitStruct;
 USB_DeviceBUSParam_TypeDef USB_DeviceBUSParam;
-
-//static uint8_t Buffer[BUFFER_LENGTH];
 
 #ifdef USB_CDC_LINE_CODING_SUPPORTED
     static USB_CDC_LineCoding_TypeDef LineCoding;
@@ -67,14 +33,19 @@ USB_DeviceBUSParam_TypeDef USB_DeviceBUSParam;
 
 #endif /* USB_DEBUG_PROTO */
 
-/* Private function prototypes -----------------------------------------------*/
-//static void Setup_CPU_Clock(void);
+uint8_t ringBufferRx[HL_RX_BUFFER_SIZE];    /* Receive buffer (ring buffer) */
+volatile uint16_t ringBufferWritePos = 0;   /*Recive buffer write position */
+volatile uint16_t ringBufferReadPos = 0;    /*Recive buffer read position */
 
+uint8_t ringBufferCache[HL_RX_BUFFER_SIZE];    /* Cache for received data */
+uint8_t stringBuffer[HL_RX_BUFFER_SIZE];       /* String buffer */
+
+static uint16_t ringBufferCacheLen = 0;
+
+/* Private function prototypes -----------------------------------------------*/
 
 
 /* Private functions ---------------------------------------------------------*/
-
-
 
 /**
   * @brief  USB Device layer setup and powering on
@@ -141,35 +112,30 @@ void USB_SendTemp(uint16_t temp){
   */
 USB_Result USB_CDC_RecieveData(uint8_t* Buffer, uint32_t Length)
 {
-    USB_Result result;
+    USB_Result result = USB_SUCCESS;
 
 #ifdef USB_DEBUG_PROTO
     ReceivedByteCount += Length;
 #endif /* USB_DEBUG_PROTO */
 
-    /* Process received data */
-    if (Length >= 6)
-    {
-        /* Assume ASCII string of '0' and '1', first character corresponds to PA5 */
-        uint8_t bits = 0;
-        for (int i = 0; i < 6; i++)
-        {
-            char c = Buffer[i];
-            if (c == '1')
-            {
-                bits |= (1 << (5 - i));  // PA5 is bit5, PA0 is bit0
-            }
-            else if (c != '0')
-            {
-                /* Invalid character, ignore command */
-                break;
-            }
-        }
-        PortA_SetPins(bits);
-    }
+	uint16_t tempHeadPos = ringBufferWritePos;
 
-    /* Send back received data portion (echo) */
-    result = USB_CDC_SendData(Buffer, Length);
+	for (uint32_t i = 0; i < Length; i++)
+	{
+		uint16_t nextHeadPos = (uint16_t)((uint16_t)(tempHeadPos + 1U) % HL_RX_BUFFER_SIZE);
+		if (nextHeadPos == ringBufferReadPos)
+		{
+			result = USB_ERROR;
+			break;
+		}
+		ringBufferRx[tempHeadPos] = Buffer[i];
+		tempHeadPos = nextHeadPos;
+	}
+
+	if (result == USB_SUCCESS)
+	{
+		ringBufferWritePos = tempHeadPos;
+	}
 
 #ifdef USB_DEBUG_PROTO
     if (result == USB_SUCCESS)
@@ -193,8 +159,26 @@ USB_Result USB_CDC_RecieveData(uint8_t* Buffer, uint32_t Length)
     }
     return result;
 #else
-    return USB_SUCCESS;
+    return result;
 #endif /* USB_VCOM_SYNC */
+}
+
+
+/**
+ * @brief : function clears receive buffer for USB.
+ * 
+ * Also function null positions:
+ * - Receive buffer write position (ringBufferWritePos)
+ * - Receive buffer read position (ringBufferReadPos)
+ * 
+ * @param  None.
+ * @retval None.
+ */
+void USB_CDC_FlushringBufferRx_FS()
+{
+	memset(ringBufferRx, 0, HL_RX_BUFFER_SIZE);
+	ringBufferWritePos = 0;
+	ringBufferReadPos = 0;
 }
 
 #ifdef USB_VCOM_SYNC
@@ -329,6 +313,119 @@ void assert_failed(uint8_t* file, uint32_t line, const uint8_t* expr)
 }
 #endif /* USE_ASSERT_INFO */
 
+/**
+ * @brief Processes incoming USB data and extracts a command framed by '<' and '>'.
+ * 
+ * This function checks the USB receive buffer for new data, identifies commands 
+ * enclosed in '<...>' markers, and extracts the command into `stringBuffer`. 
+ * It updates pointers to track the last found start and end markers and marks
+ * the processed command as completed by replacing the markers with '='.
+ * 
+ * @retval !0 : A command was successfully extracted, marked as completed.
+ * @retval 0  : No command was found or processed.
+ */
+char *extract_USB_command(void)
+{
+	uint16_t bytesAvailable = GetRingBufferBytesAvailable();
+
+	if (bytesAvailable > 0U)
+	{
+		uint16_t freeSpace = (uint16_t)(HL_RX_BUFFER_SIZE - 1U - ringBufferCacheLen);
+
+		if (bytesAvailable > freeSpace)
+		{
+			memset(ringBufferCache, 0, sizeof(ringBufferCache));
+			ringBufferCacheLen = 0U;
+			freeSpace = (uint16_t)(HL_RX_BUFFER_SIZE - 1U);
+		}
+
+		if (bytesAvailable > freeSpace)
+		{
+			bytesAvailable = freeSpace;
+		}
+
+		if ((bytesAvailable > 0U) &&
+			(CopyRingBufferToBuffer(&ringBufferCache[ringBufferCacheLen], bytesAvailable) == USB_CDC_RX_BUFFER_OK))
+		{
+			ringBufferCacheLen = (uint16_t)(ringBufferCacheLen + bytesAvailable);
+			ringBufferCache[ringBufferCacheLen] = '\0';
+		}
+	}
+
+	while (ringBufferCacheLen > 0U)
+	{
+		char *start = strchr((char *)ringBufferCache, '<');
+		char *end = strchr((char *)ringBufferCache, '>');
+
+		if ((end != NULL) && ((start == NULL) || (end < start)))
+		{
+			uint16_t dropLen = (uint16_t)((end - (char *)ringBufferCache) + 1);
+			memmove(ringBufferCache, end + 1, ringBufferCacheLen - dropLen);
+			ringBufferCacheLen = (uint16_t)(ringBufferCacheLen - dropLen);
+			ringBufferCache[ringBufferCacheLen] = '\0';
+			continue;
+		}
+
+		if (start == NULL)
+		{
+			return NULL;
+		}
+
+		end = strchr(start + 1, '>');
+		if (end == NULL)
+		{
+			if (start > (char *)ringBufferCache)
+			{
+				uint16_t keepLen = (uint16_t)(ringBufferCacheLen - (uint16_t)(start - (char *)ringBufferCache));
+				memmove(ringBufferCache, start, keepLen);
+				ringBufferCacheLen = keepLen;
+				ringBufferCache[ringBufferCacheLen] = '\0';
+			}
+			return NULL;
+		}
+
+		{
+			uint16_t commandLen = (uint16_t)(end - start - 1);
+			uint16_t consumedLen = (uint16_t)((end - (char *)ringBufferCache) + 1);
+			uint16_t remainingLen = (uint16_t)(ringBufferCacheLen - consumedLen);
+
+			if (commandLen >= HL_RX_BUFFER_SIZE)
+			{
+				commandLen = (uint16_t)(HL_RX_BUFFER_SIZE - 1U);
+			}
+
+			memcpy(stringBuffer, start + 1, commandLen);
+			stringBuffer[commandLen] = '\0';
+
+			memmove(ringBufferCache, end + 1, remainingLen);
+			ringBufferCacheLen = remainingLen;
+			ringBufferCache[ringBufferCacheLen] = '\0';
+
+			return (char *)stringBuffer;
+		}
+	}
+
+	return NULL;
+}
+
+/**
+ * @brief Clears the USB reception buffers and resets the pointers.
+ * 
+ * This function clears the parser cache and the RX ring buffer and resets
+ * their positions, so the next USB data reception starts from a clean state.
+ * 
+ * @retval None
+ */
+void USB_Flush(void) {
+    memset(ringBufferCache, 0, HL_RX_BUFFER_SIZE);
+    memset(ringBufferRx, 0, HL_RX_BUFFER_SIZE);
+
+    ringBufferCacheLen = 0;
+    ringBufferWritePos = 0;
+    ringBufferReadPos = 0;
+}
+
+
 /** @} */ /* End of group USB_Virtual_COM_Port_Echo_MDR32F9Q2I */
 
 /** @} */ /* End of group __MDR32F9Q2I_EVAL */
@@ -337,6 +434,6 @@ void assert_failed(uint8_t* file, uint32_t line, const uint8_t* expr)
 
 /******************* (C) COPYRIGHT 2025 Milandr ********************************
 *
-* END OF FILE main.c */
+* END OF FILE usb.c */
 
 

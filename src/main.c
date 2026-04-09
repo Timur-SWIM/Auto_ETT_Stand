@@ -1,6 +1,5 @@
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
-#include "port.h"
 
 void ClockInit(void){
     RST_CLK_DeInit();
@@ -66,11 +65,10 @@ int main(void) {
 	while(1) {
         uint16_t adc_val = Get_Avg_ADC_value();
 		uint16_t temp = ADC_ToTemp(adc_val);
-        // Обновление скважности ШИМ через PID регулятор
 		PID_Update((int16_t)temp);
 		if(usb_transmit_flag) {
 			usb_transmit_flag = 0;
-			//USB_SendTemp(temp);
+			USB_SendTemp(temp);
 		}
 	}
 }

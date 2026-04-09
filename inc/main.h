@@ -4,5 +4,6 @@
 #include "usb.h"
 #include "timer.h"
 #include "dac.h"
+#include "port.h"
 
 void ClockInit(void);

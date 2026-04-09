@@ -423,6 +423,11 @@
               <FileType>1</FileType>
               <FilePath>.\src\port.c</FilePath>
             </File>
+            <File>
+              <FileName>ring_buffer.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\src\ring_buffer.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -467,6 +472,11 @@
               <FileName>port.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\inc\port.h</FilePath>
+            </File>
+            <File>
+              <FileName>ring_buffer.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\inc\ring_buffer.h</FilePath>
             </File>
           </Files>
         </Group>
