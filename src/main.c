@@ -47,7 +47,7 @@ void ClockInit(void){
 	                 ENABLE);
 }
 
-#define BUFFER_LENGTH   100
+#define BUFFER_LENGTH   128
 static uint8_t Buffer[BUFFER_LENGTH];
 int main(void) {
 	ClockInit();
@@ -60,7 +60,7 @@ int main(void) {
     Timer_1_Init();
     DAC_DMA_Init();
 	VCom_Configuration();
-	USB_CDC_Init(Buffer, 6 , SET);
+	USB_CDC_Init(Buffer, 1 , SET);
 	Setup_USB();
 	while(1) {
         uint16_t adc_val = Get_Avg_ADC_value();

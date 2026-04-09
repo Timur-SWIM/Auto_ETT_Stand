@@ -2210,10 +2210,10 @@ Image Symbol Table
     Usb_CDC_Device_Descriptor                0x2000005f   Data          18  mdr32fxqi_usb_cdc.o(.data.Usb_CDC_Device_Descriptor)
     [Anonymous Symbol]                       0x2000005f   Section        0  mdr32fxqi_usb_cdc.o(.data.Usb_CDC_Device_Descriptor)
     .bss                                     0x20000400   Section       96  libspace.o(.bss)
-    Buffer                                   0x20000474   Data         100  main.o(.bss.Buffer)
+    Buffer                                   0x20000474   Data         128  main.o(.bss.Buffer)
     [Anonymous Symbol]                       0x20000474   Section        0  main.o(.bss.Buffer)
-    CDC_ClassPacketData                      0x200004d8   Data           8  mdr32fxqi_usb_cdc.o(.bss.CDC_ClassPacketData)
-    [Anonymous Symbol]                       0x200004d8   Section        0  mdr32fxqi_usb_cdc.o(.bss.CDC_ClassPacketData)
+    CDC_ClassPacketData                      0x200004f4   Data           8  mdr32fxqi_usb_cdc.o(.bss.CDC_ClassPacketData)
+    [Anonymous Symbol]                       0x200004f4   Section        0  mdr32fxqi_usb_cdc.o(.bss.CDC_ClassPacketData)
     LedState                                 0x20000c40   Data           4  timer.o(.bss.LedState)
     [Anonymous Symbol]                       0x20000c40   Section        0  timer.o(.bss.LedState)
     LineCoding                               0x20000c44   Data           8  usb.o(.bss.LineCoding)
@@ -2604,12 +2604,12 @@ Image Symbol Table
     __libspace_start                         0x20000400   Data          96  libspace.o(.bss)
     ADCConvertedValue                        0x20000460   Data          20  adc.o(.bss.ADCConvertedValue)
     __temporary_stack_top$libspace           0x20000460   Data           0  libspace.o(.bss)
-    DAC_DMA_AltCtrlStr                       0x200004e0   Data          36  dac.o(.bss.DAC_DMA_AltCtrlStr)
-    DAC_DMA_InitStr                          0x20000504   Data          16  dac.o(.bss.DAC_DMA_InitStr)
-    DAC_DMA_PriCtrlStr                       0x20000514   Data          36  dac.o(.bss.DAC_DMA_PriCtrlStr)
-    DAC_PORT_InitStructure                   0x20000538   Data          12  dac.o(.bss.DAC_PORT_InitStructure)
-    DAC_TIM_CntInit                          0x20000544   Data          24  dac.o(.bss.DAC_TIM_CntInit)
-    DMA_AltCtrlStr                           0x2000055c   Data          36  adc.o(.bss.DMA_AltCtrlStr)
+    DAC_DMA_AltCtrlStr                       0x200004fc   Data          36  dac.o(.bss.DAC_DMA_AltCtrlStr)
+    DAC_DMA_InitStr                          0x20000520   Data          16  dac.o(.bss.DAC_DMA_InitStr)
+    DAC_DMA_PriCtrlStr                       0x20000530   Data          36  dac.o(.bss.DAC_DMA_PriCtrlStr)
+    DAC_PORT_InitStructure                   0x20000554   Data          12  dac.o(.bss.DAC_PORT_InitStructure)
+    DAC_TIM_CntInit                          0x20000560   Data          24  dac.o(.bss.DAC_TIM_CntInit)
+    DMA_AltCtrlStr                           0x20000578   Data          36  adc.o(.bss.DMA_AltCtrlStr)
     DMA_ControlTable                         0x20000800   Data        1024  mdr32fxqi_dma.o(.bss.DMA_ControlTable)
     DMA_InitStr                              0x20000c00   Data          16  adc.o(.bss.DMA_InitStr)
     DMA_PriCtrlStr                           0x20000c10   Data          36  adc.o(.bss.DMA_PriCtrlStr)
@@ -3007,15 +3007,15 @@ Memory Map of the image
 
     0x20000400        -       0x00000060   Zero   RW         1199    .bss                c_w.l(libspace.o)
     0x20000460        -       0x00000014   Zero   RW           13    .bss.ADCConvertedValue  adc.o
-    0x20000474        -       0x00000064   Zero   RW           29    .bss.Buffer         main.o
-    0x200004d8        -       0x00000008   Zero   RW          860    .bss.CDC_ClassPacketData  mdr32fxqi_usb_cdc.o
-    0x200004e0        -       0x00000024   Zero   RW          129    .bss.DAC_DMA_AltCtrlStr  dac.o
-    0x20000504        -       0x00000010   Zero   RW          130    .bss.DAC_DMA_InitStr  dac.o
-    0x20000514        -       0x00000024   Zero   RW          128    .bss.DAC_DMA_PriCtrlStr  dac.o
-    0x20000538        -       0x0000000c   Zero   RW          131    .bss.DAC_PORT_InitStructure  dac.o
-    0x20000544        -       0x00000018   Zero   RW          132    .bss.DAC_TIM_CntInit  dac.o
-    0x2000055c        -       0x00000024   Zero   RW           14    .bss.DMA_AltCtrlStr  adc.o
-    0x20000580   0x080056f4   0x00000280   PAD
+    0x20000474        -       0x00000080   Zero   RW           29    .bss.Buffer         main.o
+    0x200004f4        -       0x00000008   Zero   RW          860    .bss.CDC_ClassPacketData  mdr32fxqi_usb_cdc.o
+    0x200004fc        -       0x00000024   Zero   RW          129    .bss.DAC_DMA_AltCtrlStr  dac.o
+    0x20000520        -       0x00000010   Zero   RW          130    .bss.DAC_DMA_InitStr  dac.o
+    0x20000530        -       0x00000024   Zero   RW          128    .bss.DAC_DMA_PriCtrlStr  dac.o
+    0x20000554        -       0x0000000c   Zero   RW          131    .bss.DAC_PORT_InitStructure  dac.o
+    0x20000560        -       0x00000018   Zero   RW          132    .bss.DAC_TIM_CntInit  dac.o
+    0x20000578        -       0x00000024   Zero   RW           14    .bss.DMA_AltCtrlStr  adc.o
+    0x2000059c   0x080056f4   0x00000264   PAD
     0x20000800        -       0x00000400   Zero   RW          396    .bss.DMA_ControlTable  mdr32fxqi_dma.o
     0x20000c00        -       0x00000010   Zero   RW           15    .bss.DMA_InitStr    adc.o
     0x20000c10        -       0x00000024   Zero   RW           12    .bss.DMA_PriCtrlStr  adc.o
@@ -3061,7 +3061,7 @@ Image component sizes
        526          0          0          0        164       8938   adc.o
        386          0          0         20        124       9610   dac.o
         84          0          0          0          0       2047   irq_dma.o
-       278          0          0          0        100       2857   main.o
+       278          0          0          0        128       2857   main.o
        584          0          0          0          0      10942   mdr32fxqi_adc.o
         44          0          0          0          0       6357   mdr32fxqi_bkp.o
        120          0          0          0          0       1825   mdr32fxqi_dac.o
@@ -3083,7 +3083,7 @@ Image component sizes
     ----------------------------------------------------------------------
      13152        136        240        116       4296     154556   Object Totals
          0          0         32          0          0          0   (incl. Generated)
-       112          0          3          5        649          0   (incl. Padding)
+       112          0          3          5        621          0   (incl. Padding)
 
     ----------------------------------------------------------------------
 
