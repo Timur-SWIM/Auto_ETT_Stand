@@ -41,7 +41,7 @@ uint8_t ringBufferCache[HL_RX_BUFFER_SIZE];    /* Cache for received data */
 uint8_t stringBuffer[HL_RX_BUFFER_SIZE];       /* String buffer */
 
 static uint16_t ringBufferCacheLen = 0;
-
+char tempString[100];
 /* Private function prototypes -----------------------------------------------*/
 
 
@@ -312,6 +312,19 @@ void assert_failed(uint8_t* file, uint32_t line, const uint8_t* expr)
     while(1) {}
 }
 #endif /* USE_ASSERT_INFO */
+
+void USB_PrintDebug(char *format, ...)
+{
+#ifdef DEBUG
+	va_list argptr;
+	va_start(argptr, format);
+
+	vsprintf(tempString, format, argptr);
+	va_end(argptr);
+    USB_CDC_SendData((uint8_t *)tempString, strlen(tempString));
+#endif
+}
+
 
 /**
  * @brief Processes incoming USB data and extracts a command framed by '<' and '>'.

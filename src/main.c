@@ -70,10 +70,12 @@ int main(void) {
 			usb_transmit_flag = 0;
 			USB_SendTemp(temp);
 		}
+        char *extracted_Command = extract_USB_command();
+        if (extracted_Command != NULL) {
+            USB_PrintDebug("Extracted command: %s\n", extracted_Command);
+        }
 	}
 }
-
-
 
 /**
   * @brief  Reports the source file name, the source line number

@@ -12,6 +12,8 @@
 #include <string.h>
 #include <stdarg.h>
 
+#define DEBUG
+
 void Setup_USB(void);
 
 void VCom_Configuration(void);
@@ -25,6 +27,8 @@ void USB_CDC_FlushringBufferRx_FS();
 USB_Result USB_CDC_GetLineCoding(uint16_t wINDEX, USB_CDC_LineCoding_TypeDef* DATA);
 
 USB_Result USB_CDC_SetLineCoding(uint16_t wINDEX, const USB_CDC_LineCoding_TypeDef* DATA);
+
+void USB_PrintDebug(char *format, ...);
 
 char *extract_USB_command(void);
 
