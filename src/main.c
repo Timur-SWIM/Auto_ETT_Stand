@@ -59,9 +59,10 @@ int main(void) {
     PortA_Init();
     Timer_1_Init();
     DAC_DMA_Init();
-	VCom_Configuration();
 	USB_CDC_Init(Buffer, 1 , SET);
+	VCom_Configuration();
 	Setup_USB();
+	USB_CDC_Reset();
 	while(1) {
         uint16_t adc_val = Get_Avg_ADC_value();
 		uint16_t temp = ADC_ToTemp(adc_val);

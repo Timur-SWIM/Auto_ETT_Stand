@@ -88,7 +88,7 @@
             <nStopA1X>0</nStopA1X>
             <nStopA2X>0</nStopA2X>
           </AfterMake>
-          <SelectedForBatchBuild>0</SelectedForBatchBuild>
+          <SelectedForBatchBuild>1</SelectedForBatchBuild>
           <SVCSIdString></SVCSIdString>
         </TargetCommonOption>
         <CommonProperty>
@@ -428,6 +428,11 @@
               <FileType>1</FileType>
               <FilePath>.\src\ring_buffer.c</FilePath>
             </File>
+            <File>
+              <FileName>sys_command.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\inc\sys_command.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -477,6 +482,11 @@
               <FileName>ring_buffer.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\inc\ring_buffer.h</FilePath>
+            </File>
+            <File>
+              <FileName>sys_command.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\inc\sys_command.h</FilePath>
             </File>
           </Files>
         </Group>

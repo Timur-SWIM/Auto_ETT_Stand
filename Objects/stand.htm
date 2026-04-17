@@ -3,7 +3,7 @@
 <title>Static Call Graph - [.\Objects\stand.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\Objects\stand.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 6240002: Last Updated: Sat Apr 11 16:11:23 2026
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 6240002: Last Updated: Fri Apr 17 19:56:06 2026
 <BR><P>
 <H3>Maximum Stack Usage =        324 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -630,7 +630,9 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[68]"></a>__aeabi_memcpy</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, rt_memcpy_v6.o(.text))
-<BR><BR>[Called By]<UL><LI><a href="#[109]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;extract_USB_command
+<BR><BR>[Called By]<UL><LI><a href="#[d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA_IRQHandler
+<LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;My_DMA_Init
+<LI><a href="#[109]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;extract_USB_command
 <LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_memmove
 </UL>
 
@@ -1184,11 +1186,12 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA_IRQHandler
 </UL>
 
-<P><STRONG><a name="[d]"></a>DMA_IRQHandler</STRONG> (Thumb, 84 bytes, Stack size 8 bytes, irq_dma.o(.text.DMA_IRQHandler))
+<P><STRONG><a name="[d]"></a>DMA_IRQHandler</STRONG> (Thumb, 304 bytes, Stack size 8 bytes, irq_dma.o(.text.DMA_IRQHandler))
 <BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = DMA_IRQHandler &rArr; DMA_ChannelReloadCycle
 </UL>
 <BR>[Calls]<UL><LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA_ChannelReloadCycle
 <LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA_GetFlagStatus
+<LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memcpy
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_mdr32f9q2i.o(RESET)
 </UL>
@@ -1249,12 +1252,13 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DAC_DMA_Init
 </UL>
 
-<P><STRONG><a name="[9b]"></a>My_DMA_Init</STRONG> (Thumb, 172 bytes, Stack size 48 bytes, dac.o(.text.My_DMA_Init))
-<BR><BR>[Stack]<UL><LI>Max Depth = 80<LI>Call Chain = My_DMA_Init &rArr; DMA_Init &rArr; DMA_CtrlDataInit
+<P><STRONG><a name="[9b]"></a>My_DMA_Init</STRONG> (Thumb, 240 bytes, Stack size 56 bytes, dac.o(.text.My_DMA_Init))
+<BR><BR>[Stack]<UL><LI>Max Depth = 88<LI>Call Chain = My_DMA_Init &rArr; DMA_Init &rArr; DMA_CtrlDataInit
 </UL>
 <BR>[Calls]<UL><LI><a href="#[ac]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA_Cmd
 <LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA_Init
 <LI><a href="#[ab]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA_StructInit
+<LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memcpy
 </UL>
 <BR>[Called By]<UL><LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DAC_DMA_Init
 </UL>
@@ -1469,13 +1473,13 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[c4]"></a>Setup_USB</STRONG> (Thumb, 76 bytes, Stack size 16 bytes, usb.o(.text.Setup_USB))
-<BR><BR>[Stack]<UL><LI>Max Depth = 132<LI>Call Chain = Setup_USB &rArr; USB_CDC_Reset &rArr; USB_EP_doDataOut &rArr; USB_EP_Idle &rArr; USB_EP_SetReady &rArr; USB_SetSEPxCTRL
+<BR><BR>[Stack]<UL><LI>Max Depth = 132<LI>Call Chain = Setup_USB &rArr; USB_DeviceInit &rArr; USB_EP_setSetupHandler &rArr; USB_EP_Idle &rArr; USB_EP_SetReady &rArr; USB_SetSEPxCTRL
 </UL>
-<BR>[Calls]<UL><LI><a href="#[c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USB_CDC_Reset
-<LI><a href="#[c7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USB_DevicePowerOn
+<BR>[Calls]<UL><LI><a href="#[c7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USB_DevicePowerOn
 <LI><a href="#[c6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USB_SetSIM
 <LI><a href="#[c5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USB_DeviceInit
 <LI><a href="#[c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NVIC_EnableIRQ
+<LI><a href="#[c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USB_CDC_Reset
 <LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RST_CLK_PCLKcmd
 </UL>
 <BR>[Called By]<UL><LI><a href="#[5c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
@@ -1677,6 +1681,7 @@ Global Symbols
 <LI><a href="#[d5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USB_EP_doDataOut
 </UL>
 <BR>[Called By]<UL><LI><a href="#[c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Setup_USB
+<LI><a href="#[5c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
 <P><STRONG><a name="[df]"></a>USB_CDC_SendData</STRONG> (Thumb, 76 bytes, Stack size 24 bytes, mdr32fxqi_usb_cdc.o(.text.USB_CDC_SendData))
@@ -1793,8 +1798,8 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[f1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USB_SetSEPxCTRL
 </UL>
-<BR>[Called By]<UL><LI><a href="#[c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USB_CDC_Reset
-<LI><a href="#[c5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USB_DeviceInit
+<BR>[Called By]<UL><LI><a href="#[c5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USB_DeviceInit
+<LI><a href="#[c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USB_CDC_Reset
 </UL>
 
 <P><STRONG><a name="[ef]"></a>USB_EP_Stall</STRONG> (Thumb, 126 bytes, Stack size 24 bytes, mdr32fxqi_usb_device.o(.text.USB_EP_Stall))
@@ -2037,7 +2042,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[5c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[5c]"></a>main</STRONG> (Thumb, 164 bytes, Stack size 24 bytes, main.o(.text.main))
+<P><STRONG><a name="[5c]"></a>main</STRONG> (Thumb, 168 bytes, Stack size 24 bytes, main.o(.text.main))
 <BR><BR>[Stack]<UL><LI>Max Depth = 188 + Unknown Stack Size
 <LI>Call Chain = main &rArr; USB_PrintDebug &rArr; USB_CDC_SendData &rArr; USB_EP_doDataIn &rArr; USB_EP_sendInDataPortion &rArr; USB_EP_SetReady &rArr; USB_SetSEPxCTRL
 </UL>
@@ -2045,9 +2050,10 @@ Global Symbols
 <LI><a href="#[109]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;extract_USB_command
 <LI><a href="#[fe]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USB_SendTemp
 <LI><a href="#[b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PID_Update
+<LI><a href="#[c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USB_CDC_Reset
 <LI><a href="#[c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Setup_USB
-<LI><a href="#[da]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USB_CDC_Init
 <LI><a href="#[10d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;VCom_Configuration
+<LI><a href="#[da]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USB_CDC_Init
 <LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DAC_DMA_Init
 <LI><a href="#[d1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Timer_1_Init
 <LI><a href="#[bd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PortA_Init

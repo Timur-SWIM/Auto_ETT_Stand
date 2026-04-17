@@ -5,11 +5,11 @@
 /* Private define ------------------------------------------------------------*/
 
 /* Private variables ---------------------------------------------------------*/
-USB_Clock_TypeDef USB_Clock_InitStruct;
-USB_DeviceBUSParam_TypeDef USB_DeviceBUSParam;
+static USB_Clock_TypeDef USB_Clock_InitStruct;
+static USB_DeviceBUSParam_TypeDef USB_DeviceBUSParam;
 
 #ifdef USB_CDC_LINE_CODING_SUPPORTED
-    static USB_CDC_LineCoding_TypeDef LineCoding;
+static USB_CDC_LineCoding_TypeDef LineCoding;
 #endif /* USB_CDC_LINE_CODING_SUPPORTED */
 
 #ifdef USB_VCOM_SYNC
@@ -42,10 +42,6 @@ uint8_t stringBuffer[HL_RX_BUFFER_SIZE];       /* String buffer */
 
 static uint16_t ringBufferCacheLen = 0;
 char tempString[100];
-/* Private function prototypes -----------------------------------------------*/
-
-
-/* Private functions ---------------------------------------------------------*/
 
 /**
   * @brief  USB Device layer setup and powering on
@@ -58,9 +54,13 @@ void Setup_USB(void)
     RST_CLK_PCLKcmd(RST_CLK_PCLK_USB, ENABLE);
 
     /* Device layer initialization */
+#ifdef USB_DEBUG
     USB_Clock_InitStruct.USB_USBC1_Source = USB_C1HSEdiv1;
+#endif
+#ifndef USB_DEBUG
+    USB_Clock_InitStruct.USB_USBC1_Source = USB_C1HSEdiv2;
+#endif
     USB_Clock_InitStruct.USB_PLLUSBMUL    = USB_PLLUSBMUL6;
-
     USB_DeviceBUSParam.MODE  = USB_SC_SCFSP_Full;
     USB_DeviceBUSParam.SPEED = USB_SC_SCFSR_12Mb;
     USB_DeviceBUSParam.PULL  = USB_HSCR_DP_PULLUP_Set;
@@ -315,7 +315,7 @@ void assert_failed(uint8_t* file, uint32_t line, const uint8_t* expr)
 
 void USB_PrintDebug(char *format, ...)
 {
-#ifdef DEBUG
+#ifdef USB_DEBUG
 	va_list argptr;
 	va_start(argptr, format);
 
@@ -324,6 +324,8 @@ void USB_PrintDebug(char *format, ...)
     USB_CDC_SendData((uint8_t *)tempString, strlen(tempString));
 #endif
 }
+
+
 
 
 /**
@@ -438,15 +440,5 @@ void USB_Flush(void) {
     ringBufferReadPos = 0;
 }
 
-
-/** @} */ /* End of group USB_Virtual_COM_Port_Echo_MDR32F9Q2I */
-
-/** @} */ /* End of group __MDR32F9Q2I_EVAL */
-
-/** @} */ /* End of group __MDR32FxQI_StdPeriph_Examples */
-
-/******************* (C) COPYRIGHT 2025 Milandr ********************************
-*
-* END OF FILE usb.c */
 
 

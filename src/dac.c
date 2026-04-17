@@ -6,18 +6,52 @@ TIMER_CntInitTypeDef DAC_TIM_CntInit;
 DMA_ChannelInitTypeDef DAC_DMA_InitStr;
 DMA_CtrlDataInitTypeDef DAC_DMA_PriCtrlStr;
 DMA_CtrlDataInitTypeDef DAC_DMA_AltCtrlStr;
-uint16_t DAC_DMA_Data[10] = {
-    112,   // 0.09 В
-    298,   // 0.24 В
-    521,   // 0.42 В
-    763,   // 0.615 В
-    1030,  // 0.83 В
-    1303,  // 1.05 В
-    1613,  // 1.3 В
-    1985,  // 1.6 В
-    2606,  // 2.1 В
-    3723   // 3.0 В
+
+uint16_t DAC_DMA_Data[DAC_BUFFER_SIZE] = {
+    112,   // 0.09 В = 1500 МГц
+    298,   // 0.24 В = 1600 МГц
+    521,   // 0.42 В = 1700 МГц
+    763,   // 0.615 В = 1800 МГц
+    1030,  // 0.83 В = 1900 МГц
+    1303,  // 1.05 В = 2000 МГц
+    1613,  // 1.3 В = 2100 МГц
+    1985,  // 1.6 В = 2200 МГц
+    2606,  // 2.1 В = 2300 МГц
+    3723   // 3.0 В = 2400 МГц
     };
+
+uint16_t DAC_DMA_Buffer[2][DAC_BUFFER_SIZE];
+
+volatile uint8_t DAC_DMA_ActiveBufferIndex  = 0U; /* 0 -> PRIMARY, 1 -> ALTERNATE */
+volatile uint8_t DAC_DMA_UpdatePending      = 0U;
+volatile uint8_t DAC_DMA_PendingBufferIndex = 1U;
+
+uint8_t DAC_GetInactiveBufferIndex(void)
+{
+    return (DAC_DMA_ActiveBufferIndex == 0U) ? 1U : 0U;
+}
+
+int DAC_RequestBufferUpdate(const uint16_t *src, uint32_t count)
+{
+    uint8_t inactive_index;
+
+    if ((src == 0) || (count != DAC_BUFFER_SIZE)) {
+        return -1;
+    }
+
+    NVIC_DisableIRQ(DMA_IRQn);
+
+    inactive_index = DAC_GetInactiveBufferIndex();
+
+    memcpy(DAC_DMA_Buffer[inactive_index], src, DAC_BUFFER_SIZE * sizeof(uint16_t));
+
+    DAC_DMA_PendingBufferIndex = inactive_index;
+    DAC_DMA_UpdatePending      = 1U;
+
+    NVIC_EnableIRQ(DMA_IRQn);
+
+    return 0;
+}
 
 int DAC_DMA_Init(void) {
     /* Initialize DMA */
@@ -30,9 +64,15 @@ int DAC_DMA_Init(void) {
 }
 
 int My_DMA_Init(void) {
+    memcpy(DAC_DMA_Buffer[0], DAC_DMA_Data, sizeof(DAC_DMA_Data));
+    memcpy(DAC_DMA_Buffer[1], DAC_DMA_Data, sizeof(DAC_DMA_Data));
+
+    DAC_DMA_ActiveBufferIndex  = 0U;
+    DAC_DMA_PendingBufferIndex = 1U;
+    DAC_DMA_UpdatePending      = 0U;
     //RST_CLK_PCLKcmd(RST_CLK_PCLK_DAC, ENABLE);
     /* DMA Configuration */
-    DAC_DMA_PriCtrlStr.DMA_SourceBaseAddr = (uint32_t)DAC_DMA_Data;
+    DAC_DMA_PriCtrlStr.DMA_SourceBaseAddr = (uint32_t)DAC_DMA_Buffer[0];
     DAC_DMA_PriCtrlStr.DMA_DestBaseAddr   = (uint32_t)(&(MDR_DAC->DAC2_DATA));
     DAC_DMA_PriCtrlStr.DMA_SourceIncSize  = DMA_SourceIncHalfword;
     DAC_DMA_PriCtrlStr.DMA_DestIncSize    = DMA_DestIncNo;
@@ -43,7 +83,7 @@ int My_DMA_Init(void) {
     DAC_DMA_PriCtrlStr.DMA_SourceProtCtrl = DMA_SourcePrivileged;   
     DAC_DMA_PriCtrlStr.DMA_DestProtCtrl   = DMA_DestPrivileged;
     /* Set Alternate Control Data */
-    DAC_DMA_AltCtrlStr.DMA_SourceBaseAddr = (uint32_t)DAC_DMA_Data;
+    DAC_DMA_AltCtrlStr.DMA_SourceBaseAddr = (uint32_t)DAC_DMA_Buffer[1];
     DAC_DMA_AltCtrlStr.DMA_DestBaseAddr   = (uint32_t)(&(MDR_DAC->DAC2_DATA));
     DAC_DMA_AltCtrlStr.DMA_SourceIncSize  = DMA_SourceIncHalfword;
     DAC_DMA_AltCtrlStr.DMA_DestIncSize    = DMA_DestIncNo;

@@ -12,7 +12,7 @@
 #include <string.h>
 #include <stdarg.h>
 
-#define DEBUG
+#define USB_DEBUG
 
 void Setup_USB(void);
 
