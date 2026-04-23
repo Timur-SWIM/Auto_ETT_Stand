@@ -37,6 +37,14 @@ typedef enum {
     GEN_ERR_CMD = -4
 } GenStatus_t;
 
+typedef enum {
+    ATT_OK = 0,
+    ATT_ERR_NULL = -1,
+    ATT_ERR_RANGE = -2,
+    ATT_ERR_PARAM = -3,
+    ATT_ERR_CMD = -4
+} AttStatus_t;
+
 static uint8_t SplitCommand(char *src, const char *sep)
 {
     uint8_t count = 0;
@@ -270,6 +278,28 @@ static int Generator_Execute(uint8_t argc, char argv[][SUBTOKEN_LEN])
     return GEN_ERR_CMD;
 }
 
+static int Attenuator_Execute(uint8_t argc, char argv[][SUBTOKEN_LEN])
+{
+    uint16_t p_out;
+
+    if (argc < 2U) {
+        return ATT_ERR_PARAM;
+    }
+
+    if (strcmp(argv[1], "SET") == 0) {
+        if (argc != 3U) {
+            return ATT_ERR_PARAM;
+        }
+        if (StringToU16(argv[2], &p_out) != ATT_OK) {
+            return ATT_ERR_PARAM;
+        }
+        return SetAttenuation(p_out);
+    }
+    if (strcmp(argv[1], "READ") == 0) {
+        return ReadAttenuation();
+    }
+    return ATT_ERR_CMD;
+}
 /**
  * @brief Parses a command string into tokens.
  * 
@@ -313,6 +343,7 @@ void Parse_command(char *str) {
                 break;
             case 'A':    // Attenuator сommand
                 /* code */
+                int status = Attenuator_Execute(subcount, subtokens);
                 break;
             case 'D':    // Debugger command
                 /* code */
