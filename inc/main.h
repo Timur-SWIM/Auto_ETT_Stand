@@ -5,5 +5,6 @@
 #include "timer.h"
 #include "dac.h"
 #include "port.h"
+#include "sys_command.h"
 
 void ClockInit(void);

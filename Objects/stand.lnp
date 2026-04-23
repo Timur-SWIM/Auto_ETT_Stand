@@ -8,6 +8,7 @@
 ".\objects\irq_dma.o"
 ".\objects\port.o"
 ".\objects\ring_buffer.o"
+".\objects\sys_command.o"
 ".\objects\startup_mdr32f9q2i.o"
 ".\objects\system_mdr32f9q2i.o"
 ".\objects\mdr32fxqi_adc.o"

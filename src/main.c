@@ -74,6 +74,7 @@ int main(void) {
         char *extracted_Command = extract_USB_command();
         if (extracted_Command != NULL) {
             USB_PrintDebug("Extracted command: %s\n", extracted_Command);
+            Parse_command(extracted_Command);
         }
 	}
 }

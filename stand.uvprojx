@@ -429,9 +429,9 @@
               <FilePath>.\src\ring_buffer.c</FilePath>
             </File>
             <File>
-              <FileName>sys_command.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\inc\sys_command.h</FilePath>
+              <FileName>sys_command.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\src\sys_command.c</FilePath>
             </File>
           </Files>
         </Group>

@@ -360,12 +360,12 @@
     <File>
       <GroupNumber>1</GroupNumber>
       <FileNumber>10</FileNumber>
-      <FileType>5</FileType>
+      <FileType>1</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\inc\sys_command.h</PathWithFileName>
-      <FilenameWithoutPath>sys_command.h</FilenameWithoutPath>
+      <PathWithFileName>.\src\sys_command.c</PathWithFileName>
+      <FilenameWithoutPath>sys_command.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
