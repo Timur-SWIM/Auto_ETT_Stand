@@ -19,8 +19,7 @@ void PortA_Init(void)
 
     PORT_Init(PORTA_PORT, &PORT_InitStructure);
 
-    /* Set all pins to low initially */
-    PORT_ResetBits(PORTA_PORT, PORTA_PINS);
+    PORT_SetBits(PORTA_PORT, PORTA_PINS);
 }
 
 void PortA_SetPins(uint8_t bits)

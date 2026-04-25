@@ -2,6 +2,7 @@
 #define SYS_COMMAND_H
 #include "dac.h"
 #include "port.h"
+#include "usb.h"
 #include <stdlib.h>
 #include <stdint.h>
 #include <string.h>

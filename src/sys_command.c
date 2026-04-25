@@ -292,7 +292,7 @@ static uint16_t find_PoutMax_in_VCO_table(uint8_t start_index, uint8_t end_index
 
 int SetAttenuation(uint16_t p_out)
 {
-    if (p_out > 300U) {
+    if (p_out > 315U || p_out < 0U) {
         return ERR_PARAM;
     }
     uint16_t p_buf;
@@ -300,7 +300,7 @@ int SetAttenuation(uint16_t p_out)
     uint8_t inactive_Buffer = DAC_GetInactiveBufferIndex();
     uint16_t d_min = DAC_DMA_Buffer[inactive_Buffer][0];
     uint16_t d_max = DAC_DMA_Buffer[inactive_Buffer][DAC_BUFFER_SIZE - 1U];
-
+    USB_PrintDebug("Requested attenuation for P_out %d dBm. Inactive buffer DAC range: %d - %d\r\n", p_out, d_min, d_max);
     if (d_max == d_min) {
         int p_buf_index = find_index_in_vco_table(d_min);
         if (p_buf_index == ERR_PARAM) {
@@ -310,6 +310,7 @@ int SetAttenuation(uint16_t p_out)
     } else {
         int d_min_index = find_index_in_vco_table(d_min);
         int d_max_index = find_index_in_vco_table(d_max);
+        USB_PrintDebug("DAC range corresponds to VCO table indices: %d - %d\r\n", d_min_index, d_max_index);
 
         if (d_min_index == ERR_PARAM || d_max_index == ERR_PARAM) {
             return ERR_PARAM;
@@ -317,10 +318,11 @@ int SetAttenuation(uint16_t p_out)
         p_buf = find_PoutMax_in_VCO_table((uint8_t)d_min_index, (uint8_t)d_max_index);
     }
     a_req = p_buf - p_out;
-    uint16_t att_set_db  = (a_req + 1) / 2 * 2;
-    uint8_t att_code = att_set_db;
+    uint16_t att_steps  = (a_req / 10) * 2;
+    uint8_t att_code = att_steps;
 
     PortA_SetPins(att_code);
+    USB_PrintDebug("Attenuation set to P_buf(%d)dB - P_set(%d)dB = A_set %d dB (code: %d)\r\n", p_buf, p_out, a_req, att_code);
 
     return OK;
 }
