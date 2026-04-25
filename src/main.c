@@ -67,15 +67,15 @@ int main(void) {
         uint16_t adc_val = Get_Avg_ADC_value();
 		uint16_t temp = ADC_ToTemp(adc_val);
 		PID_Update((int16_t)temp);
-		if(usb_transmit_flag) {
-			usb_transmit_flag = 0;
-			//USB_SendTemp(temp);
-		}
         char *extracted_Command = extract_USB_command();
         if (extracted_Command != NULL) {
-            USB_PrintDebug("Extracted command: %s\r\n", extracted_Command);
+            //USB_PrintDebug("Extracted command: %s\r\n", extracted_Command);
             Parse_command(extracted_Command);
         }
+        if(usb_transmit_flag) {
+			usb_transmit_flag = 0;
+			USB_SendTemp(temp);
+		}
 	}
 }
 

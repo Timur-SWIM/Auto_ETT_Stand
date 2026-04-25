@@ -395,6 +395,9 @@ void Parse_command(char *str) {
             case 'D':    // Debugger command
                 /* code */
                 break;
+            case 'I':    // Information command
+                USB_PrintDebug("MDR32_ETT_Stand_Board\r\n");
+                break;
             default:
                 break;
         }

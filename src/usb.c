@@ -98,8 +98,7 @@ void VCom_Configuration(void)
 void USB_SendTemp(uint16_t temp){
     static uint8_t txBuffer[64];
     int len = snprintf((char*)txBuffer, sizeof(txBuffer),
-                       "TEMP: %d C\r\n",
-                       temp);
+                       "TEMP: %d C\r\n",temp);
 
     USB_CDC_SendData(txBuffer, len);
 }
@@ -324,9 +323,6 @@ void USB_PrintDebug(char *format, ...)
     USB_CDC_SendData((uint8_t *)tempString, strlen(tempString));
 #endif
 }
-
-
-
 
 /**
  * @brief Processes incoming USB data and extracts a command framed by '<' and '>'.
