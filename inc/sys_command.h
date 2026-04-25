@@ -1,6 +1,7 @@
 #ifndef SYS_COMMAND_H
 #define SYS_COMMAND_H
 #include "dac.h"
+#include "port.h"
 #include <stdlib.h>
 #include <stdint.h>
 #include <string.h>
@@ -11,6 +12,21 @@
 
 #define SUBTOKENS_MAX   16
 #define SUBTOKEN_LEN    32
+
+typedef struct {
+    uint16_t freq_mhz;
+    uint16_t dac_code;
+    uint16_t p_out_dbm;
+} VCO_Point_t;
+
+#define VCO_TABLE_SIZE  (sizeof(vco_table) / sizeof(vco_table[0]))
+
+typedef struct {
+    uint16_t freq_mhz;
+    float p_out_dbm;
+} dac_pout_point_t;
+
+#define DAC_POUT_TABLE_SIZE (sizeof(g_dac_pout_table) / sizeof(g_dac_pout_table[0]))
 
 static uint8_t SplitCommand(char *src, const char *sep);
 static int StringToU16(const char *str, uint16_t *value);

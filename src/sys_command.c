@@ -6,44 +6,29 @@ static char subtokens[SUBTOKENS_MAX][SUBTOKEN_LEN]; // subtokens array
 /* =========================
  * Таблица калибровки VCO
  * ========================= */
-typedef struct {
-    uint16_t freq_mhz;
-    uint16_t dac_code;
-} VCO_Point_t;
-
 static const VCO_Point_t vco_table[] = {
-    {1500,  112},
-    {1600,  298},
-    {1700,  521},
-    {1800,  763},
-    {1900, 1030},
-    {2000, 1303},
-    {2100, 1613},
-    {2200, 1985},
-    {2300, 2606},
-    {2400, 3723}
+    {1500,  112, 320},
+    {1600,  298, 324},
+    {1700,  521, 323},
+    {1800,  763, 326},
+    {1900, 1030, 341},
+    {2000, 1303, 355},
+    {2100, 1613, 380},
+    {2200, 1985, 363},
+    {2300, 2606, 341},
+    {2400, 3723, 371}
 };
-
-#define VCO_TABLE_SIZE  (sizeof(vco_table) / sizeof(vco_table[0]))
 
 /* =========================
  * Коды возврата
  * ========================= */
 typedef enum {
-    GEN_OK = 0,
-    GEN_ERR_NULL = -1,
-    GEN_ERR_RANGE = -2,
-    GEN_ERR_PARAM = -3,
-    GEN_ERR_CMD = -4
-} GenStatus_t;
-
-typedef enum {
-    ATT_OK = 0,
-    ATT_ERR_NULL = -1,
-    ATT_ERR_RANGE = -2,
-    ATT_ERR_PARAM = -3,
-    ATT_ERR_CMD = -4
-} AttStatus_t;
+    OK = 0,
+    ERR_NULL = -1,
+    ERR_RANGE = -2,
+    ERR_PARAM = -3,
+    ERR_CMD = -4
+} Status_t;
 
 static uint8_t SplitCommand(char *src, const char *sep)
 {
@@ -66,25 +51,25 @@ static int StringToU16(const char *str, uint16_t *value)
     unsigned long temp;
 
     if ((str == NULL) || (value == NULL)) {   
-        return GEN_ERR_NULL;
+        return ERR_NULL;
     }
 
     if (*str == '\0') {
-        return GEN_ERR_PARAM;
+        return ERR_PARAM;
     }
 
     temp = strtoul(str, &endptr, 10);
 
     if (*endptr != '\0') {
-        return GEN_ERR_PARAM;
+        return ERR_PARAM;
     }
 
     if (temp > 65535UL) {
-        return GEN_ERR_PARAM;
+        return ERR_PARAM;
     }
 
     *value = (uint16_t)temp;
-    return GEN_OK;
+    return OK;
 }
 
 static int VCO_FreqToDac(uint16_t freq_mhz, uint16_t *dac_out)
@@ -92,12 +77,12 @@ static int VCO_FreqToDac(uint16_t freq_mhz, uint16_t *dac_out)
     uint8_t i;
 
     if (dac_out == NULL) {
-        return GEN_ERR_NULL;
+        return ERR_NULL;
     }
 
     if ((freq_mhz < vco_table[0].freq_mhz) ||
         (freq_mhz > vco_table[VCO_TABLE_SIZE - 1].freq_mhz)) {
-        return GEN_ERR_RANGE;
+        return ERR_RANGE;
     }
 
     for (i = 0; i < (VCO_TABLE_SIZE - 1U); i++) {
@@ -108,7 +93,7 @@ static int VCO_FreqToDac(uint16_t freq_mhz, uint16_t *dac_out)
 
         if (freq_mhz == f1) {
             *dac_out = d1;
-            return GEN_OK;
+            return OK;
         }
 
         if ((freq_mhz > f1) && (freq_mhz <= f2)) {
@@ -116,12 +101,12 @@ static int VCO_FreqToDac(uint16_t freq_mhz, uint16_t *dac_out)
             uint32_t den = (uint32_t)(f2 - f1);
 
             *dac_out = (uint16_t)(d1 + (num / den));
-            return GEN_OK;
+            return OK;
         }
     }
 
     *dac_out = vco_table[VCO_TABLE_SIZE - 1U].dac_code;
-    return GEN_OK;
+    return OK;
 }
 
 static int Generator_SetSingleFreq(uint16_t freq_mhz)
@@ -129,8 +114,8 @@ static int Generator_SetSingleFreq(uint16_t freq_mhz)
     uint16_t dac;
     uint8_t i;
 
-    if (VCO_FreqToDac(freq_mhz, &dac) != GEN_OK) {
-        return GEN_ERR_RANGE;
+    if (VCO_FreqToDac(freq_mhz, &dac) != OK) {
+        return ERR_RANGE;
     }
 
     for (i = 0; i < DAC_BUFFER_SIZE; i++) {
@@ -138,7 +123,7 @@ static int Generator_SetSingleFreq(uint16_t freq_mhz)
     }
 
     Generator_ApplyBuffer();
-    return GEN_OK;
+        return OK;
 }
 
 static int Generator_SetSpan(uint16_t f_start, uint16_t f_stop)
@@ -146,7 +131,7 @@ static int Generator_SetSpan(uint16_t f_start, uint16_t f_stop)
     uint8_t i;
 
     if (f_start > f_stop) {
-        return GEN_ERR_PARAM;
+        return ERR_PARAM;
     }
 
     for (i = 0; i < DAC_BUFFER_SIZE; i++) {
@@ -160,15 +145,15 @@ static int Generator_SetSpan(uint16_t f_start, uint16_t f_stop)
                    (((uint32_t)(f_stop - f_start) * i) / (DAC_BUFFER_SIZE - 1U)));
         }
 
-        if (VCO_FreqToDac(freq, &dac) != GEN_OK) {
-            return GEN_ERR_RANGE;
+        if (VCO_FreqToDac(freq, &dac) != OK) {
+            return ERR_RANGE;
         }
 
         DAC_DMA_Data[i] = dac;
     }
 
     Generator_ApplyBuffer();
-    return GEN_OK;
+    return OK;
 }
 
 static int Generator_SetTable(uint8_t count, char args[][SUBTOKEN_LEN], uint8_t start_index)
@@ -178,20 +163,20 @@ static int Generator_SetTable(uint8_t count, char args[][SUBTOKEN_LEN], uint8_t 
     uint16_t dac;
 
     if (count == 0U) {
-        return GEN_ERR_PARAM;
+        return ERR_PARAM;
     }
 
     if (count > DAC_BUFFER_SIZE) {
-        return GEN_ERR_PARAM;
+        return ERR_PARAM;
     }
 
     for (i = 0; i < count; i++) {
-        if (StringToU16(args[start_index + i], &freq) != GEN_OK) {
-            return GEN_ERR_PARAM;
+        if (StringToU16(args[start_index + i], &freq) != OK) {
+            return ERR_PARAM;
         }
 
-        if (VCO_FreqToDac(freq, &dac) != GEN_OK) {
-            return GEN_ERR_RANGE;
+        if (VCO_FreqToDac(freq, &dac) != OK) {
+            return ERR_RANGE;
         }
 
         DAC_DMA_Data[i] = dac;
@@ -203,7 +188,7 @@ static int Generator_SetTable(uint8_t count, char args[][SUBTOKEN_LEN], uint8_t 
     }
 
     Generator_ApplyBuffer();
-    return GEN_OK;
+    return OK;
 }
 
 static int Generator_Off(void)
@@ -215,7 +200,7 @@ static int Generator_Off(void)
     }
 
     Generator_ApplyBuffer();
-    return GEN_OK;
+    return OK;
 }
 
 static void Generator_ApplyBuffer(void)
@@ -228,16 +213,16 @@ static int Generator_Execute(uint8_t argc, char argv[][SUBTOKEN_LEN])
     uint16_t f1, f2;
 
     if (argc < 2U) {
-        return GEN_ERR_CMD;
+        return ERR_CMD;
     }
 
     if (strcmp(argv[1], "SET") == 0) {
         if (argc != 3U) {
-            return GEN_ERR_PARAM;
+            return ERR_PARAM;
         }
 
-        if (StringToU16(argv[2], &f1) != GEN_OK) {
-            return GEN_ERR_PARAM;
+        if (StringToU16(argv[2], &f1) != OK) {
+            return ERR_PARAM;
         }
 
         return Generator_SetSingleFreq(f1);
@@ -245,15 +230,15 @@ static int Generator_Execute(uint8_t argc, char argv[][SUBTOKEN_LEN])
 
     if (strcmp(argv[1], "SPAN") == 0) {
         if (argc != 4U) {
-            return GEN_ERR_PARAM;
+            return ERR_PARAM;
         }
 
-        if (StringToU16(argv[2], &f1) != GEN_OK) {
-            return GEN_ERR_PARAM;
+        if (StringToU16(argv[2], &f1) != OK) {
+            return ERR_PARAM;
         }
 
-        if (StringToU16(argv[3], &f2) != GEN_OK) {
-            return GEN_ERR_PARAM;
+        if (StringToU16(argv[3], &f2) != OK) {
+            return ERR_PARAM;
         }
 
         return Generator_SetSpan(f1, f2);
@@ -261,7 +246,7 @@ static int Generator_Execute(uint8_t argc, char argv[][SUBTOKEN_LEN])
 
     if (strcmp(argv[1], "TABLE") == 0) {
         if (argc < 3U) {
-            return GEN_ERR_PARAM;
+            return ERR_PARAM;
         }
 
         return Generator_SetTable((uint8_t)(argc - 2U), argv, 2U);
@@ -269,13 +254,75 @@ static int Generator_Execute(uint8_t argc, char argv[][SUBTOKEN_LEN])
 
     if (strcmp(argv[1], "OFF") == 0) {
         if (argc != 2U) {
-            return GEN_ERR_PARAM;
+            return ERR_PARAM;
         }
 
         return Generator_Off();
     }
 
-    return GEN_ERR_CMD;
+    return ERR_CMD;
+}
+
+int ReadAttenuation(void)
+{
+    return OK;
+}
+
+static int find_index_in_vco_table(uint16_t dac_code)
+{
+    for (uint8_t i = 0; i < VCO_TABLE_SIZE; i++) {
+        if (vco_table[i].dac_code == dac_code) {
+            return (int)i;
+        }
+    }
+    return ERR_PARAM;
+}
+
+static uint16_t find_PoutMax_in_VCO_table(uint8_t start_index, uint8_t end_index)
+{
+    uint16_t p_max = 0;
+    for (uint8_t i = start_index; i <= end_index; i++) {
+        if (vco_table[i].p_out_dbm > p_max) {
+            p_max = vco_table[i].p_out_dbm;
+        }
+    }
+
+    return p_max;
+}
+
+int SetAttenuation(uint16_t p_out)
+{
+    if (p_out > 300U) {
+        return ERR_PARAM;
+    }
+    uint16_t p_buf;
+    uint16_t a_req;
+    uint8_t inactive_Buffer = DAC_GetInactiveBufferIndex();
+    uint16_t d_min = DAC_DMA_Buffer[inactive_Buffer][0];
+    uint16_t d_max = DAC_DMA_Buffer[inactive_Buffer][DAC_BUFFER_SIZE - 1U];
+
+    if (d_max == d_min) {
+        int p_buf_index = find_index_in_vco_table(d_min);
+        if (p_buf_index == ERR_PARAM) {
+            return ERR_PARAM;
+        }
+        p_buf = vco_table[p_buf_index].p_out_dbm;
+    } else {
+        int d_min_index = find_index_in_vco_table(d_min);
+        int d_max_index = find_index_in_vco_table(d_max);
+
+        if (d_min_index == ERR_PARAM || d_max_index == ERR_PARAM) {
+            return ERR_PARAM;
+        }
+        p_buf = find_PoutMax_in_VCO_table((uint8_t)d_min_index, (uint8_t)d_max_index);
+    }
+    a_req = p_buf - p_out;
+    uint16_t att_set_db  = (a_req + 1) / 2 * 2;
+    uint8_t att_code = att_set_db;
+
+    PortA_SetPins(att_code);
+
+    return OK;
 }
 
 static int Attenuator_Execute(uint8_t argc, char argv[][SUBTOKEN_LEN])
@@ -283,22 +330,22 @@ static int Attenuator_Execute(uint8_t argc, char argv[][SUBTOKEN_LEN])
     uint16_t p_out;
 
     if (argc < 2U) {
-        return ATT_ERR_PARAM;
+        return ERR_PARAM;
     }
 
     if (strcmp(argv[1], "SET") == 0) {
         if (argc != 3U) {
-            return ATT_ERR_PARAM;
+            return ERR_PARAM;
         }
-        if (StringToU16(argv[2], &p_out) != ATT_OK) {
-            return ATT_ERR_PARAM;
+        if (StringToU16(argv[2], &p_out) != OK) {
+            return ERR_PARAM;
         }
         return SetAttenuation(p_out);
     }
     if (strcmp(argv[1], "READ") == 0) {
         return ReadAttenuation();
     }
-    return ATT_ERR_CMD;
+    return ERR_CMD;
 }
 /**
  * @brief Parses a command string into tokens.
@@ -338,12 +385,10 @@ void Parse_command(char *str) {
         switch (subtokens[0][0])
         {
             case 'G':    // Generator command
-                /* code */
-                int status = Generator_Execute(subcount, subtokens);
+                (void)Generator_Execute(subcount, subtokens);
                 break;
             case 'A':    // Attenuator сommand
-                /* code */
-                int status = Attenuator_Execute(subcount, subtokens);
+                (void)Attenuator_Execute(subcount, subtokens);
                 break;
             case 'D':    // Debugger command
                 /* code */

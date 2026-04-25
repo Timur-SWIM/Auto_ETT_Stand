@@ -40,4 +40,3 @@ void PortA_SetPins(uint8_t bits)
     PORT_SetBits(PORTA_PORT, pins);
     PORT_ResetBits(PORTA_PORT, PORTA_PINS & ~pins);
 }
-

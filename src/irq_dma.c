@@ -81,7 +81,6 @@ void DMA_IRQHandler(void)
     /* Check if interrupt from DMA_Channel_ADC2 */
     if (DMA_GetFlagStatus(DMA_Channel_ADC2, DMA_FLAG_CHNL_ALT) == RESET)
     {
-        /* Reconfigure the inactive DMA data structure for ADC2 */
         DMA_ChannelReloadCycle(DMA_Channel_ADC2, 
                                DMA_CTRL_DATA_ALTERNATE, 
                                DAC_BUFFER_SIZE, 
