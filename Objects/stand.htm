@@ -3,7 +3,7 @@
 <title>Static Call Graph - [.\Objects\stand.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\Objects\stand.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 6240002: Last Updated: Thu Apr 30 19:13:27 2026
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 6240002: Last Updated: Thu Apr 30 20:36:48 2026
 <BR><P>
 <H3>Maximum Stack Usage =        324 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -1283,8 +1283,8 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA_IRQHandler
 </UL>
 
-<P><STRONG><a name="[d]"></a>DMA_IRQHandler</STRONG> (Thumb, 304 bytes, Stack size 8 bytes, irq_dma.o(.text.DMA_IRQHandler))
-<BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = DMA_IRQHandler &rArr; DMA_ChannelReloadCycle
+<P><STRONG><a name="[d]"></a>DMA_IRQHandler</STRONG> (Thumb, 400 bytes, Stack size 16 bytes, irq_dma.o(.text.DMA_IRQHandler))
+<BR><BR>[Stack]<UL><LI>Max Depth = 40<LI>Call Chain = DMA_IRQHandler &rArr; DMA_ChannelReloadCycle
 </UL>
 <BR>[Calls]<UL><LI><a href="#[b4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA_ChannelReloadCycle
 <LI><a href="#[b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA_GetFlagStatus

@@ -55,8 +55,10 @@ src/main.c(2): warning: In file included from...
       |             ^~~~~~~~~~~~~~~~~~~~~
 8 warnings generated.
 compiling main.c...
+compiling usb.c...
+compiling sys_command.c...
 linking...
-Program Size: Code=26832 RO-data=1128 RW-data=120 ZI-data=6800  
+Program Size: Code=26928 RO-data=1128 RW-data=120 ZI-data=6800  
 FromELF: creating hex file...
 ".\Objects\stand.axf" - 0 Error(s), 8 Warning(s).
 
@@ -91,35 +93,35 @@ Package Vendor: Milandr
 <h2>Collection of Component Files used:</h2>
 
    * Component: Milandr::Device:Startup@2.2.0i
-      Include file:  Libraries/SPL/MDR32FxQI/inc/IRQ_Handler_Template/MDR32F9Q2I_IT.h
-      Source file:   Libraries/CMSIS/MDR32FxQI/DeviceSupport/MDR32F9Q2I/startup/arm/startup_MDR32F9Q2I.S
-      Source file:   Libraries/SPL/MDR32FxQI/src/IRQ_Handler_Template/MDR32F9Q2I_IT.c
-      Include file:  Libraries/CMSIS/MDR32FxQI/DeviceSupport/MDR32F9Q2I/startup/system_MDR32F9Q2I.h
-      Source file:   Libraries/CMSIS/MDR32FxQI/DeviceSupport/MDR32F9Q2I/startup/system_MDR32F9Q2I.c
-      Include file:  Libraries/SPL/MDR32FxQI/MDR32FxQI_config.h
       Include file:  Libraries/CMSIS/MDR32FxQI/DeviceSupport/MDR32F9Q2I/inc/MDR32F9Q2I.h
       Include file:  Libraries/CMSIS/MDR32FxQI/CoreSupport/CM3/core_cm3.h
+      Include file:  Libraries/SPL/MDR32FxQI/inc/IRQ_Handler_Template/MDR32F9Q2I_IT.h
+      Source file:   Libraries/SPL/MDR32FxQI/src/IRQ_Handler_Template/MDR32F9Q2I_IT.c
+      Source file:   Libraries/CMSIS/MDR32FxQI/DeviceSupport/MDR32F9Q2I/startup/arm/startup_MDR32F9Q2I.S
+      Include file:  Libraries/SPL/MDR32FxQI/MDR32FxQI_config.h
+      Include file:  Libraries/CMSIS/MDR32FxQI/DeviceSupport/MDR32F9Q2I/startup/system_MDR32F9Q2I.h
+      Source file:   Libraries/CMSIS/MDR32FxQI/DeviceSupport/MDR32F9Q2I/startup/system_MDR32F9Q2I.c
 
    * Component: Milandr::Drivers:ADC@2.2.0i
-      Source file:   Libraries/SPL/MDR32FxQI/src/MDR32FxQI_adc.c
       Include file:  Libraries/SPL/MDR32FxQI/inc/MDR32FxQI_adc.h
+      Source file:   Libraries/SPL/MDR32FxQI/src/MDR32FxQI_adc.c
 
    * Component: Milandr::Drivers:BKP@2.2.0i
       Include file:  Libraries/SPL/MDR32FxQI/inc/MDR32FxQI_bkp.h
       Source file:   Libraries/SPL/MDR32FxQI/src/MDR32FxQI_bkp.c
 
    * Component: Milandr::Drivers:DAC@2.2.0i
-      Include file:  Libraries/SPL/MDR32FxQI/inc/MDR32FxQI_dac.h
       Source file:   Libraries/SPL/MDR32FxQI/src/MDR32FxQI_dac.c
+      Include file:  Libraries/SPL/MDR32FxQI/inc/MDR32FxQI_dac.h
 
    * Component: Milandr::Drivers:DMA@2.2.0i
       Source file:   Libraries/SPL/MDR32FxQI/src/MDR32FxQI_dma.c
       Include file:  Libraries/SPL/MDR32FxQI/inc/MDR32FxQI_dma.h
 
    * Component: Milandr::Drivers:EEPROM@2.2.0i
-      Source file:   Libraries/SPL/MDR32FxQI/src/MDR32FxQI_asm.S
       Include file:  Libraries/SPL/MDR32FxQI/inc/MDR32FxQI_eeprom.h
       Source file:   Libraries/SPL/MDR32FxQI/src/MDR32FxQI_eeprom.c
+      Source file:   Libraries/SPL/MDR32FxQI/src/MDR32FxQI_asm.S
 
    * Component: Milandr::Drivers:PORT@2.2.0i
       Include file:  Libraries/SPL/MDR32FxQI/inc/MDR32FxQI_port.h
@@ -130,8 +132,8 @@ Package Vendor: Milandr
       Include file:  Libraries/SPL/MDR32FxQI/inc/MDR32FxQI_power.h
 
    * Component: Milandr::Drivers:RST_CLK@2.2.0i
-      Source file:   Libraries/SPL/MDR32FxQI/src/MDR32FxQI_rst_clk.c
       Include file:  Libraries/SPL/MDR32FxQI/inc/MDR32FxQI_rst_clk.h
+      Source file:   Libraries/SPL/MDR32FxQI/src/MDR32FxQI_rst_clk.c
 
    * Component: Milandr::Drivers:TIMER@2.2.0i
       Include file:  Libraries/SPL/MDR32FxQI/inc/MDR32FxQI_timer.h
@@ -139,13 +141,13 @@ Package Vendor: Milandr
 
    * Component: Milandr::Drivers:USB Library@2.1.0i
       Include file:  Libraries/SPL/MDR32FxQI/inc/USB_Library/MDR32FxQI_usb_CDC.h
-      Source file:   Libraries/SPL/MDR32FxQI/src/USB_Library/MDR32FxQI_usb_device.c
       Include file:  Libraries/SPL/MDR32FxQI/inc/USB_Library/MDR32FxQI_usb_device.h
       Source file:   Libraries/SPL/MDR32FxQI/src/USB_Library/MDR32FxQI_usb_CDC.c
+      Source file:   Libraries/SPL/MDR32FxQI/src/USB_Library/MDR32FxQI_usb_device.c
 
    * Component: Milandr::Drivers:USB@2.1.0i
-      Include file:  Libraries/SPL/MDR32FxQI/inc/MDR32FxQI_usb.h
       Source file:   Libraries/SPL/MDR32FxQI/src/MDR32FxQI_usb.c
+      Include file:  Libraries/SPL/MDR32FxQI/inc/MDR32FxQI_usb.h
 
    * Component: Milandr::Drivers:UTILS@1.2.0i
       Include file:  Libraries/SPL/MDR32FxQI/inc/MDR32FxQI_utils.h
