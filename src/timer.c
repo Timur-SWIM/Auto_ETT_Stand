@@ -38,8 +38,8 @@ void Timer_1_Init(void) {
 
 	/* Init TIMx Counter */
 	sTIM_1_CntInit.TIMER_IniCounter        = 0;
-	sTIM_1_CntInit.TIMER_Prescaler         = 7999;        /* Prescaler = 8000 - 1 */
-	sTIM_1_CntInit.TIMER_Period            = 3999;        /* Period = 4000 - 1 (1 second) */
+	sTIM_1_CntInit.TIMER_Prescaler         = 8000 - 1;        /* Prescaler = 8000 - 1 */
+	sTIM_1_CntInit.TIMER_Period            = 8000 - 1;        /* Period = 4000 - 1 (1 second) */
 	sTIM_1_CntInit.TIMER_CounterMode       = TIMER_CntMode_ClkFixedDir;
 	sTIM_1_CntInit.TIMER_CounterDirection  = TIMER_CntDir_Up;
     sTIM_1_CntInit.TIMER_EventSource       = TIMER_EvSrc_TIM_CLK;

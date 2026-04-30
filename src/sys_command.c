@@ -318,8 +318,18 @@ int SetAttenuation(uint16_t p_out)
         p_buf = find_PoutMax_in_VCO_table((uint8_t)d_min_index, (uint8_t)d_max_index);
     }
     a_req = p_buf - p_out;
+    if (a_req < 0) {
+        a_req = 0;
+    }
+    if (a_req > 300) {
+        a_req = 300;
+    }
     uint16_t att_steps  = (a_req / 10) * 2;
     uint8_t att_code = att_steps;
+
+    if (att_code > 60) { 
+        att_code = 60;
+    }
 
     PortA_SetPins(att_code);
     USB_PrintDebug("Attenuation set to P_buf(%d)dB - P_set(%d)dB = A_set %d dB (code: %d)\r\n", p_buf, p_out, a_req, att_code);

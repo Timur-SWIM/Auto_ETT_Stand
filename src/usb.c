@@ -314,17 +314,18 @@ void assert_failed(uint8_t* file, uint32_t line, const uint8_t* expr)
 
 void USB_PrintDebug(char *format, ...)
 {
-#ifdef USB_DEBUG
+//#ifdef USB_DEBUG
 	va_list argptr;
 	va_start(argptr, format);
 
 	vsprintf(tempString, format, argptr);
 	va_end(argptr);
     USB_CDC_SendData((uint8_t *)tempString, strlen(tempString));
-#endif
+//#endif
 }
 
 /**
+ * 
  * @brief Processes incoming USB data and extracts a command framed by '<' and '>'.
  * 
  * This function checks the USB receive buffer for new data, identifies commands 
