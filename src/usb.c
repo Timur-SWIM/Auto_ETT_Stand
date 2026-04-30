@@ -324,6 +324,16 @@ void USB_PrintDebug(char *format, ...)
 //#endif
 }
 
+void USB_Print(char *format, ...)
+{
+	va_list argptr;
+	va_start(argptr, format);
+
+	vsprintf(tempString, format, argptr);
+	va_end(argptr);
+    USB_CDC_SendData((uint8_t *)tempString, strlen(tempString));
+}
+
 /**
  * 
  * @brief Processes incoming USB data and extracts a command framed by '<' and '>'.

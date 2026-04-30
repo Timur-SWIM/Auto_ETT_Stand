@@ -59,6 +59,7 @@ int main(void) {
     PortA_Init();
     Timer_1_Init();
     DAC_DMA_Init();
+    //Generator_Off();
 	USB_CDC_Init(Buffer, 1 , SET);
 	VCom_Configuration();
 	Setup_USB();
@@ -69,7 +70,7 @@ int main(void) {
 		PID_Update((int16_t)temp);
         char *extracted_Command = extract_USB_command();
         if (extracted_Command != NULL) {
-            //USB_PrintDebug("Extracted command: %s\r\n", extracted_Command);
+            USB_PrintDebug("Extracted command: %s\r\n", extracted_Command);
             Parse_command(extracted_Command);
         }
         if(usb_transmit_flag) {

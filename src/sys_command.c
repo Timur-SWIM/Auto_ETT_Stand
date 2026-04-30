@@ -191,7 +191,7 @@ static int Generator_SetTable(uint8_t count, char args[][SUBTOKEN_LEN], uint8_t 
     return OK;
 }
 
-static int Generator_Off(void)
+int Generator_Off(void)
 {
     uint8_t i;
 
@@ -406,7 +406,7 @@ void Parse_command(char *str) {
                 /* code */
                 break;
             case 'I':    // Information command
-                USB_PrintDebug("MDR32_ETT_Stand_Board\r\n");
+                USB_Print("MDR32_ETT_Stand_Board\r\n");
                 break;
             default:
                 break;

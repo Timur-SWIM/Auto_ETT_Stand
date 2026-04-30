@@ -124,8 +124,8 @@ int My_TIMER_Init(void) {
     /* Time base configuration */
     TIMER_DeInit(MDR_TIMER2);
     TIMER_BRGInit(MDR_TIMER2,TIMER_HCLKdiv1);
-    DAC_TIM_CntInit.TIMER_Prescaler        = 0x001F;
-    DAC_TIM_CntInit.TIMER_Period           = 0x0063;
+    DAC_TIM_CntInit.TIMER_Prescaler        = 8000 - 1;
+    DAC_TIM_CntInit.TIMER_Period           = 8000 - 1;
     DAC_TIM_CntInit.TIMER_CounterMode      = TIMER_CntMode_ClkFixedDir;
     DAC_TIM_CntInit.TIMER_CounterDirection = TIMER_CntDir_Up;
     DAC_TIM_CntInit.TIMER_EventSource      = TIMER_EvSrc_TIM_CLK;

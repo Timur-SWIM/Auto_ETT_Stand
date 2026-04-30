@@ -22,16 +22,43 @@ Dialog DLL:      TCM.DLL V1.56.6.0
  
 <h2>Project:</h2>
 c:\Users\User\Documents\Milandr\MiTestExample\Stand\stand.uvprojx
-Project File Date:  04/23/2026
+Project File Date:  04/30/2026
 
 <h2>Output:</h2>
 *** Using Compiler 'V6.24', folder: 'C:\Users\User\AppData\Local\Keil_v5\ARM\ARMCLANG\Bin'
 Build target 'Target_1'
-compiling usb.c...
+src/main.c(2): warning: In file included from...
+./inc\main.h(8): warning: In file included from...
+./inc\sys_command.h(32): warning: unused function 'SplitCommand' [-Wunused-function]
+   32 | static uint8_t SplitCommand(char *src, const char *sep);
+      |                ^~~~~~~~~~~~
+./inc\sys_command.h(33): warning: unused function 'StringToU16' [-Wunused-function]
+   33 | static int StringToU16(const char *str, uint16_t *value);
+      |            ^~~~~~~~~~~
+./inc\sys_command.h(34): warning: unused function 'VCO_FreqToDac' [-Wunused-function]
+   34 | static int VCO_FreqToDac(uint16_t freq_mhz, uint16_t *dac_out);
+      |            ^~~~~~~~~~~~~
+./inc\sys_command.h(36): warning: unused function 'Generator_SetSingleFreq' [-Wunused-function]
+   36 | static int Generator_SetSingleFreq(uint16_t freq_mhz);
+      |            ^~~~~~~~~~~~~~~~~~~~~~~
+./inc\sys_command.h(37): warning: unused function 'Generator_SetSpan' [-Wunused-function]
+   37 | static int Generator_SetSpan(uint16_t f_start, uint16_t f_stop);
+      |            ^~~~~~~~~~~~~~~~~
+./inc\sys_command.h(38): warning: unused function 'Generator_SetTable' [-Wunused-function]
+   38 | static int Generator_SetTable(uint8_t count, char args[][SUBTOKEN_LEN], uint8_t start_index);
+      |            ^~~~~~~~~~~~~~~~~~
+./inc\sys_command.h(41): warning: unused function 'Generator_Execute' [-Wunused-function]
+   41 | static int Generator_Execute(uint8_t argc, char argv[][SUBTOKEN_LEN]);
+      |            ^~~~~~~~~~~~~~~~~
+./inc\sys_command.h(42): warning: unused function 'Generator_ApplyBuffer' [-Wunused-function]
+   42 | static void Generator_ApplyBuffer(void);
+      |             ^~~~~~~~~~~~~~~~~~~~~
+8 warnings generated.
+compiling main.c...
 linking...
-Program Size: Code=26756 RO-data=1104 RW-data=120 ZI-data=6800  
+Program Size: Code=26832 RO-data=1128 RW-data=120 ZI-data=6800  
 FromELF: creating hex file...
-".\Objects\stand.axf" - 0 Error(s), 0 Warning(s).
+".\Objects\stand.axf" - 0 Error(s), 8 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -64,14 +91,14 @@ Package Vendor: Milandr
 <h2>Collection of Component Files used:</h2>
 
    * Component: Milandr::Device:Startup@2.2.0i
-      Include file:  Libraries/CMSIS/MDR32FxQI/DeviceSupport/MDR32F9Q2I/startup/system_MDR32F9Q2I.h
-      Include file:  Libraries/CMSIS/MDR32FxQI/CoreSupport/CM3/core_cm3.h
-      Source file:   Libraries/CMSIS/MDR32FxQI/DeviceSupport/MDR32F9Q2I/startup/arm/startup_MDR32F9Q2I.S
-      Source file:   Libraries/CMSIS/MDR32FxQI/DeviceSupport/MDR32F9Q2I/startup/system_MDR32F9Q2I.c
-      Include file:  Libraries/CMSIS/MDR32FxQI/DeviceSupport/MDR32F9Q2I/inc/MDR32F9Q2I.h
-      Source file:   Libraries/SPL/MDR32FxQI/src/IRQ_Handler_Template/MDR32F9Q2I_IT.c
       Include file:  Libraries/SPL/MDR32FxQI/inc/IRQ_Handler_Template/MDR32F9Q2I_IT.h
+      Source file:   Libraries/CMSIS/MDR32FxQI/DeviceSupport/MDR32F9Q2I/startup/arm/startup_MDR32F9Q2I.S
+      Source file:   Libraries/SPL/MDR32FxQI/src/IRQ_Handler_Template/MDR32F9Q2I_IT.c
+      Include file:  Libraries/CMSIS/MDR32FxQI/DeviceSupport/MDR32F9Q2I/startup/system_MDR32F9Q2I.h
+      Source file:   Libraries/CMSIS/MDR32FxQI/DeviceSupport/MDR32F9Q2I/startup/system_MDR32F9Q2I.c
       Include file:  Libraries/SPL/MDR32FxQI/MDR32FxQI_config.h
+      Include file:  Libraries/CMSIS/MDR32FxQI/DeviceSupport/MDR32F9Q2I/inc/MDR32F9Q2I.h
+      Include file:  Libraries/CMSIS/MDR32FxQI/CoreSupport/CM3/core_cm3.h
 
    * Component: Milandr::Drivers:ADC@2.2.0i
       Source file:   Libraries/SPL/MDR32FxQI/src/MDR32FxQI_adc.c
@@ -86,45 +113,45 @@ Package Vendor: Milandr
       Source file:   Libraries/SPL/MDR32FxQI/src/MDR32FxQI_dac.c
 
    * Component: Milandr::Drivers:DMA@2.2.0i
-      Include file:  Libraries/SPL/MDR32FxQI/inc/MDR32FxQI_dma.h
       Source file:   Libraries/SPL/MDR32FxQI/src/MDR32FxQI_dma.c
+      Include file:  Libraries/SPL/MDR32FxQI/inc/MDR32FxQI_dma.h
 
    * Component: Milandr::Drivers:EEPROM@2.2.0i
-      Source file:   Libraries/SPL/MDR32FxQI/src/MDR32FxQI_eeprom.c
       Source file:   Libraries/SPL/MDR32FxQI/src/MDR32FxQI_asm.S
       Include file:  Libraries/SPL/MDR32FxQI/inc/MDR32FxQI_eeprom.h
+      Source file:   Libraries/SPL/MDR32FxQI/src/MDR32FxQI_eeprom.c
 
    * Component: Milandr::Drivers:PORT@2.2.0i
       Include file:  Libraries/SPL/MDR32FxQI/inc/MDR32FxQI_port.h
       Source file:   Libraries/SPL/MDR32FxQI/src/MDR32FxQI_port.c
 
    * Component: Milandr::Drivers:POWER@2.2.0i
-      Include file:  Libraries/SPL/MDR32FxQI/inc/MDR32FxQI_power.h
       Source file:   Libraries/SPL/MDR32FxQI/src/MDR32FxQI_power.c
+      Include file:  Libraries/SPL/MDR32FxQI/inc/MDR32FxQI_power.h
 
    * Component: Milandr::Drivers:RST_CLK@2.2.0i
-      Include file:  Libraries/SPL/MDR32FxQI/inc/MDR32FxQI_rst_clk.h
       Source file:   Libraries/SPL/MDR32FxQI/src/MDR32FxQI_rst_clk.c
+      Include file:  Libraries/SPL/MDR32FxQI/inc/MDR32FxQI_rst_clk.h
 
    * Component: Milandr::Drivers:TIMER@2.2.0i
-      Source file:   Libraries/SPL/MDR32FxQI/src/MDR32FxQI_timer.c
       Include file:  Libraries/SPL/MDR32FxQI/inc/MDR32FxQI_timer.h
+      Source file:   Libraries/SPL/MDR32FxQI/src/MDR32FxQI_timer.c
 
    * Component: Milandr::Drivers:USB Library@2.1.0i
-      Source file:   Libraries/SPL/MDR32FxQI/src/USB_Library/MDR32FxQI_usb_CDC.c
-      Include file:  Libraries/SPL/MDR32FxQI/inc/USB_Library/MDR32FxQI_usb_device.h
       Include file:  Libraries/SPL/MDR32FxQI/inc/USB_Library/MDR32FxQI_usb_CDC.h
       Source file:   Libraries/SPL/MDR32FxQI/src/USB_Library/MDR32FxQI_usb_device.c
+      Include file:  Libraries/SPL/MDR32FxQI/inc/USB_Library/MDR32FxQI_usb_device.h
+      Source file:   Libraries/SPL/MDR32FxQI/src/USB_Library/MDR32FxQI_usb_CDC.c
 
    * Component: Milandr::Drivers:USB@2.1.0i
-      Source file:   Libraries/SPL/MDR32FxQI/src/MDR32FxQI_usb.c
       Include file:  Libraries/SPL/MDR32FxQI/inc/MDR32FxQI_usb.h
+      Source file:   Libraries/SPL/MDR32FxQI/src/MDR32FxQI_usb.c
 
    * Component: Milandr::Drivers:UTILS@1.2.0i
       Include file:  Libraries/SPL/MDR32FxQI/inc/MDR32FxQI_utils.h
       Source file:   Libraries/SPL/MDR32FxQI/src/MDR32FxQI_utils.c
       Source file:   Libraries/SPL/MDR32FxQI/src/MDR32FxQI_asm.S
-Build Time Elapsed:  00:00:01
+Build Time Elapsed:  00:00:00
 </pre>
 </body>
 </html>

@@ -33,3 +33,5 @@ void USB_PrintDebug(char *format, ...);
 char *extract_USB_command(void);
 
 void USB_Flush(void);
+
+void USB_Print(char *format, ...);

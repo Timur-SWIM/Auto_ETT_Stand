@@ -36,7 +36,7 @@ static int VCO_FreqToDac(uint16_t freq_mhz, uint16_t *dac_out);
 static int Generator_SetSingleFreq(uint16_t freq_mhz);
 static int Generator_SetSpan(uint16_t f_start, uint16_t f_stop);
 static int Generator_SetTable(uint8_t count, char args[][SUBTOKEN_LEN], uint8_t start_index);
-static int Generator_Off(void);
+int Generator_Off(void);
 
 static int Generator_Execute(uint8_t argc, char argv[][SUBTOKEN_LEN]);
 static void Generator_ApplyBuffer(void);
