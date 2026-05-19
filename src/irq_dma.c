@@ -20,6 +20,9 @@ void DMA_IRQHandler(void)
 
     if (tim2_alt_now != tim2_alt_prev)
     {
+        /* The ALT flag toggles whenever the active TIM2 descriptor changes.
+           Mirror the just-finished buffer into the idle side unless a fresh
+           waveform is already waiting there. */
         tim2_alt_prev = tim2_alt_now;
 
         if (tim2_alt_now == RESET)
@@ -66,6 +69,8 @@ void DMA_IRQHandler(void)
 
     if (adc2_alt_now != adc2_alt_prev)
     {
+        /* ADC uses the same ping-pong mechanism but both descriptors target the
+           same sample window, so the handler only rearms the completed side. */
         adc2_alt_prev = adc2_alt_now;
 
         if (adc2_alt_now == RESET)

@@ -97,6 +97,8 @@ static int VCO_FreqToDac(uint16_t freq_mhz, uint16_t *dac_out)
         }
 
         if ((freq_mhz > f1) && (freq_mhz <= f2)) {
+            /* Calibration points are sparse, so intermediate DAC codes are
+               obtained by linear interpolation between neighboring entries. */
             uint32_t num = (uint32_t)(freq_mhz - f1) * (uint32_t)(d2 - d1);
             uint32_t den = (uint32_t)(f2 - f1);
 
@@ -183,6 +185,7 @@ static int Generator_SetTable(uint8_t count, char args[][SUBTOKEN_LEN], uint8_t 
     }
 
     while (i < DAC_BUFFER_SIZE) {
+        /* Repeat the last valid point so DMA always sees a full 10-sample table. */
         DAC_DMA_Data[i] = DAC_DMA_Data[i - 1U];
         i++;
     }
@@ -205,6 +208,8 @@ int Generator_Off(void)
 
 static void Generator_ApplyBuffer(void)
 {
+    /* The command layer only requests a swap; the DMA IRQ makes it effective at
+       a safe descriptor boundary. */
     (void)DAC_RequestBufferUpdate(DAC_DMA_Data, DAC_BUFFER_SIZE);
 }
 
@@ -298,6 +303,8 @@ int SetAttenuation(uint16_t p_out)
     uint16_t p_buf;
     uint16_t a_req;
     uint8_t inactive_Buffer = DAC_GetInactiveBufferIndex();
+    /* Estimate the currently prepared RF power range from the DAC table that is
+       about to become active, then derive the attenuator code from that range. */
     uint16_t d_min = DAC_DMA_Buffer[inactive_Buffer][0];
     uint16_t d_max = DAC_DMA_Buffer[inactive_Buffer][DAC_BUFFER_SIZE - 1U];
     USB_PrintDebug("Requested attenuation for P_out %d dBm. Inactive buffer DAC range: %d - %d\r\n", p_out, d_min, d_max);
@@ -389,6 +396,8 @@ void Parse_command(char *str) {
     /* parse tokens */
     for (uint8_t i = 0; i < tokens_count; i++) {
 
+        /* One USB frame may contain several comma-separated commands. Each
+           command is then split into dot-separated verb/argument fields. */
         uint8_t subcount = SplitCommand(tokens[i], ".");
 
         if (subcount == 0U) {

@@ -14,6 +14,8 @@
 #define SUBTOKENS_MAX   16
 #define SUBTOKEN_LEN    32
 
+/* USB command grammar:
+   <G.SET.1800>, <G.SPAN.1500.2400>, <G.TABLE.1500.1600.1700>, <G.OFF>, <A.SET.315>, <I> */
 typedef struct {
     uint16_t freq_mhz;
     uint16_t dac_code;

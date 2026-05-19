@@ -50,6 +50,8 @@ void ClockInit(void){
 #define BUFFER_LENGTH   128
 static uint8_t Buffer[BUFFER_LENGTH];
 int main(void) {
+    /* Keep the startup order explicit: clocks first, then data producers/consumers,
+       and only after that enable the USB command channel. */
 	ClockInit();
 	dmaInit();
 	adcInit();
@@ -65,6 +67,8 @@ int main(void) {
 	Setup_USB();
 	USB_CDC_Reset();
 	while(1) {
+        /* ADC runs continuously via DMA, the foreground loop only consumes the
+           latest averaged sample and updates the control/output subsystems. */
         uint16_t adc_val = Get_Avg_ADC_value();
 		uint16_t temp = ADC_ToTemp(adc_val);
 		PID_Update((int16_t)temp);
@@ -74,6 +78,8 @@ int main(void) {
             Parse_command(extracted_Command);
         }
         if(usb_transmit_flag) {
+            /* Timer1 raises the flag once per period so the main loop can send
+               telemetry without doing USB I/O directly from the IRQ handler. */
 			usb_transmit_flag = 0;
 			USB_SendTemp(temp);
 		}

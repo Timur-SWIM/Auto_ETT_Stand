@@ -30,6 +30,7 @@ USB_Result USB_CDC_SetLineCoding(uint16_t wINDEX, const USB_CDC_LineCoding_TypeD
 
 void USB_PrintDebug(char *format, ...);
 
+/* Commands are expected to arrive as ASCII frames: <...>. */
 char *extract_USB_command(void);
 
 void USB_Flush(void);

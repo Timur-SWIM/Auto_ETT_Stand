@@ -39,6 +39,8 @@ int DAC_RequestBufferUpdate(const uint16_t *src, uint32_t count)
         return -1;
     }
 
+    /* Copy into the buffer that DMA is not reading right now. The IRQ handler
+       will switch to it at the next ping-pong boundary. */
     NVIC_DisableIRQ(DMA_IRQn);
 
     inactive_index = DAC_GetInactiveBufferIndex();
@@ -71,6 +73,8 @@ int My_DMA_Init(void) {
     DAC_DMA_PendingBufferIndex = 1U;
     DAC_DMA_UpdatePending      = 0U;
     //RST_CLK_PCLKcmd(RST_CLK_PCLK_DAC, ENABLE);
+    /* TIM2 requests one DAC sample per timer event. Ping-pong mode lets the
+       command layer prepare a full waveform table without racing the DMA. */
     /* DMA Configuration */
     DAC_DMA_PriCtrlStr.DMA_SourceBaseAddr = (uint32_t)DAC_DMA_Buffer[0];
     DAC_DMA_PriCtrlStr.DMA_DestBaseAddr   = (uint32_t)(&(MDR_DAC->DAC2_DATA));
