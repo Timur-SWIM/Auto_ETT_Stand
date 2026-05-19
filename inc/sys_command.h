@@ -14,6 +14,8 @@
 #define SUBTOKENS_MAX   16
 #define SUBTOKEN_LEN    32
 
+/* USB command grammar:
+   <G.SET.1800>, <G.SPAN.1500.2400>, <G.TABLE.1500.1600.1700>, <G.OFF>, <A.SET.315>, <I> */
 typedef struct {
     uint16_t freq_mhz;
     uint16_t dac_code;
@@ -36,7 +38,7 @@ static int VCO_FreqToDac(uint16_t freq_mhz, uint16_t *dac_out);
 static int Generator_SetSingleFreq(uint16_t freq_mhz);
 static int Generator_SetSpan(uint16_t f_start, uint16_t f_stop);
 static int Generator_SetTable(uint8_t count, char args[][SUBTOKEN_LEN], uint8_t start_index);
-static int Generator_Off(void);
+int Generator_Off(void);
 
 static int Generator_Execute(uint8_t argc, char argv[][SUBTOKEN_LEN]);
 static void Generator_ApplyBuffer(void);

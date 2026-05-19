@@ -8,6 +8,8 @@
 
 #define DAC_BUFFER_SIZE 10U
 
+/* The generator updates the inactive DMA buffer and lets the IRQ handler swap
+   it in on the next ping-pong boundary. */
 extern uint16_t DAC_DMA_Data[DAC_BUFFER_SIZE];
 extern uint16_t DAC_DMA_Buffer[2][DAC_BUFFER_SIZE];
 

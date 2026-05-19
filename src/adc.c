@@ -16,6 +16,9 @@ void dmaInit(void) {
     /* Reset all settings */
     DMA_DeInit();
 
+    /* ADC2 writes a rolling 10-sample window into RAM. Both descriptors point
+       to the same destination array, and the DMA IRQ simply rearms the finished
+       side of the ping-pong transfer. */
     /* Set Primary Control Data */
     DMA_PriCtrlStr.DMA_SourceBaseAddr = (uint32_t)(&(MDR_ADC->ADC2_RESULT));
     DMA_PriCtrlStr.DMA_DestBaseAddr   = (uint32_t)ADCConvertedValue;
@@ -101,6 +104,8 @@ void adcInit(void) {
 uint16_t Get_Avg_ADC_value(void) {
     uint32_t sum = 0;
 
+    /* Foreground code reads a simple arithmetic mean of the latest DMA window
+       instead of synchronizing to every single ADC conversion. */
     for(int i = 0; i < 10; i++) {
         sum += ADCConvertedValue[i]; }
     
@@ -108,6 +113,7 @@ uint16_t Get_Avg_ADC_value(void) {
     return average_adc;
 }   
 uint16_t ADC_ToTemp(uint16_t adc_val) {
+    /* LM35 scale is linear, so the conversion is ADC code -> millivolts -> C. */
 	uint16_t voltage = (adc_val * VREF) / ADC_MAX_VALUE;
 	uint16_t temp = voltage / LM35_SENSITIVITY;
 	return temp;

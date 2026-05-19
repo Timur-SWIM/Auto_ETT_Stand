@@ -37,6 +37,9 @@ uint8_t ringBufferRx[HL_RX_BUFFER_SIZE];    /* Receive buffer (ring buffer) */
 volatile uint16_t ringBufferWritePos = 0;   /*Recive buffer write position */
 volatile uint16_t ringBufferReadPos = 0;    /*Recive buffer read position */
 
+/* The parser never works directly on the IRQ-fed ring buffer. It first copies
+   unread bytes into this linear cache so framed commands can be searched with
+   ordinary string routines. */
 uint8_t ringBufferCache[HL_RX_BUFFER_SIZE];    /* Cache for received data */
 uint8_t stringBuffer[HL_RX_BUFFER_SIZE];       /* String buffer */
 
@@ -124,6 +127,8 @@ USB_Result USB_CDC_RecieveData(uint8_t* Buffer, uint32_t Length)
 		uint16_t nextHeadPos = (uint16_t)((uint16_t)(tempHeadPos + 1U) % HL_RX_BUFFER_SIZE);
 		if (nextHeadPos == ringBufferReadPos)
 		{
+            /* Drop the whole packet if it does not fit: partial frames are
+               harder to recover from than a clean retry from the host. */
 			result = USB_ERROR;
 			break;
 		}
@@ -324,6 +329,16 @@ void USB_PrintDebug(char *format, ...)
 //#endif
 }
 
+void USB_Print(char *format, ...)
+{
+	va_list argptr;
+	va_start(argptr, format);
+
+	vsprintf(tempString, format, argptr);
+	va_end(argptr);
+    USB_CDC_SendData((uint8_t *)tempString, strlen(tempString));
+}
+
 /**
  * 
  * @brief Processes incoming USB data and extracts a command framed by '<' and '>'.
@@ -371,6 +386,8 @@ char *extract_USB_command(void)
 
 		if ((end != NULL) && ((start == NULL) || (end < start)))
 		{
+            /* Discard stray tail markers left from a truncated or corrupted
+               frame so they do not poison the next valid command. */
 			uint16_t dropLen = (uint16_t)((end - (char *)ringBufferCache) + 1);
 			memmove(ringBufferCache, end + 1, ringBufferCacheLen - dropLen);
 			ringBufferCacheLen = (uint16_t)(ringBufferCacheLen - dropLen);
@@ -388,6 +405,8 @@ char *extract_USB_command(void)
 		{
 			if (start > (char *)ringBufferCache)
 			{
+                /* Keep the incomplete frame prefix and wait for the next USB
+                   packet instead of re-scanning already rejected bytes. */
 				uint16_t keepLen = (uint16_t)(ringBufferCacheLen - (uint16_t)(start - (char *)ringBufferCache));
 				memmove(ringBufferCache, start, keepLen);
 				ringBufferCacheLen = keepLen;
@@ -401,6 +420,8 @@ char *extract_USB_command(void)
 			uint16_t consumedLen = (uint16_t)((end - (char *)ringBufferCache) + 1);
 			uint16_t remainingLen = (uint16_t)(ringBufferCacheLen - consumedLen);
 
+            /* Copy only the payload between '<' and '>' and immediately remove
+               the consumed bytes so the next call can continue from the tail. */
 			if (commandLen >= HL_RX_BUFFER_SIZE)
 			{
 				commandLen = (uint16_t)(HL_RX_BUFFER_SIZE - 1U);
